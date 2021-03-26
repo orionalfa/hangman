@@ -31,7 +31,7 @@ main.main-flex{
 .game-word{
     display: flex;
     justify-content: center;
-    gap: 5px;
+    gap: 10px;
     margin: 20px 0;
 }
 .game-letter{
