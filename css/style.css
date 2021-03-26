@@ -7,7 +7,7 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: 'Montserrat', sans-serif;
 }
 
 main.main-flex{
@@ -35,8 +35,8 @@ main.main-flex{
     margin: 20px 0;
 }
 .game-letter{
-    border-bottom: white 2px solid;
-    width: 18px;
+    border-bottom: white 4px solid;
+    width: 55px;
     height: 24px;
 }
 .abecedary{
@@ -45,14 +45,20 @@ main.main-flex{
 .abecedary-line{
     display: flex;
     justify-content: center;
-    gap: 5px;
+    gap: 10px;
+    margin: 10px 0;
 }
-.letter{
+.abecedary-letter{
     color: white;
     background-color: var(--keyColor);
     padding: 10px;
-    width: fit-content;
-    height: 20px;
+    width: 65px;
+    height: 65px;
+    border-radius: 5px;
+    text-align: center;
+    line-height: 46px;
+    font-size: 25px;
+    font-weight: 300;
 }
 .letter-disabled{
     background-color: var(--disabledLetter);
