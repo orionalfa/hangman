@@ -1,3 +1,7 @@
+:root {
+    --backgroundColor: rgb(28, 82, 93);
+    --keyColor: rgb(53, 96, 103);
+}
 * {
     padding: 0;
     margin: 0;
@@ -6,18 +10,42 @@
 }
 
 main.main-flex{
-
     display: flex;
     justify-content: space-between;
 }
 .game-container{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
     width: 60vw;
-    background-color: teal;
+    background-color: var(--backgroundColor);
 }
 .scores-container{
     width: 30vw;
-    background-color: thistle;
+    background-color: thistle; /* Temporal */
 }
+.hangman-drawing{
+
+}
+.game-word{
+
+}
+.abecedary{
+
+}
+.abecedary-line{
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+}
+.letter{
+    color: white;
+    background-color: var(--keyColor);
+    padding: 10px;
+    width: fit-content;
+    height: fit-content;
+};
+
 
 @media only screen and (max-width: 480px) { /* Phones */
 
