@@ -12,13 +12,14 @@
 
 main.main-flex{
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
 }
 .game-container{
     display: flex;
     flex-direction: column;
     align-content: center;
-    width: 60vw;
+    width: 70vw;
     background-color: var(--backgroundColor);
 }
 .scores-container{
@@ -66,11 +67,102 @@ main.main-flex{
 
 
 @media only screen and (max-width: 480px) { /* Phones */
-
+.game-container{
+    width: 100vw;
+}
+.scores-container{
+    width: 100vw;
+}
+.game-word{
+    display: flex;
+    gap: 5px;
+    margin: 10px 0;
+}
+.game-letter{
+    border-bottom: white 2px solid;
+    width: 26px;
+    height: 26px;
+}
+.abecedary{
+    margin: 20px 0;
+}
+.abecedary-line{
+    gap: 5px;
+    margin: 5px 0;
+}
+.abecedary-letter{
+    padding: 5px;
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+    text-align: center;
+    line-height: 20px;
+    font-size: 16px;
+}
 }
 @media only screen and (max-width: 768px) { /* Tablets */
-
+    .game-container{
+        width: 100vw;
+    }
+    .scores-container{
+        width: 100vw;
+    }
+    .game-word{
+        display: flex;
+        gap: 8px;
+        margin: 10px 0;
+    }
+    .game-letter{
+        border-bottom: white 2px solid;
+        width: 40px;
+        height: 40px;
+    }
+    .abecedary{
+        margin: 20px 0;
+    }
+    .abecedary-line{
+        gap: 8px;
+        margin: 8px 0;
+    }
+    .abecedary-letter{
+        padding: 5px;
+        width: 40px;
+        height: 40px;
+        text-align: center;
+        line-height: 30px;
+        font-size: 22px;
+    }
 }
 @media only screen and (max-width: 1400px) { /* Older laptops */
-
+ /*    .game-container{
+        width: 100vw;
+    }
+    .scores-container{
+        width: 100vw;
+    } */
+    .game-word{
+        display: flex;
+        gap: 8px;
+        margin: 10px 0;
+    }
+    .game-letter{
+        border-bottom: white 2px solid;
+        width: 40px;
+        height: 40px;
+    }
+    .abecedary{
+        margin: 20px 0;
+    }
+    .abecedary-line{
+        gap: 8px;
+        margin: 8px 0;
+    }
+    .abecedary-letter{
+        padding: 5px;
+        width: 46px;
+        height: 46px;
+        text-align: center;
+        line-height: 36px;
+        font-size: 24px;
+    }
 }
