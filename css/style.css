@@ -1,0 +1,30 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+main.main-flex{
+
+    display: flex;
+    justify-content: space-between;
+}
+.game-container{
+    width: 60vw;
+    background-color: teal;
+}
+.scores-container{
+    width: 30vw;
+    background-color: thistle;
+}
+
+@media only screen and (max-width: 480px) { /* Phones */
+
+}
+@media only screen and (max-width: 768px) { /* Tablets */
+
+}
+@media only screen and (max-width: 1400px) { /* Older laptops */
+
+}
