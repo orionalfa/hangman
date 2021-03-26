@@ -1,6 +1,7 @@
 :root {
     --backgroundColor: rgb(28, 82, 93);
     --keyColor: rgb(53, 96, 103);
+    --disabledLetter: rgg(36, 86, 94);
 }
 * {
     padding: 0;
@@ -28,10 +29,18 @@ main.main-flex{
 
 }
 .game-word{
-
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    margin: 20px 0;
+}
+.game-letter{
+    border-bottom: white 2px solid;
+    width: 18px;
+    height: 24px;
 }
 .abecedary{
-
+    margin: 20px 0;
 }
 .abecedary-line{
     display: flex;
@@ -43,8 +52,11 @@ main.main-flex{
     background-color: var(--keyColor);
     padding: 10px;
     width: fit-content;
-    height: fit-content;
-};
+    height: 20px;
+}
+.letter-disabled{
+    background-color: var(--disabledLetter);
+}
 
 
 @media only screen and (max-width: 480px) { /* Phones */
