@@ -29,19 +29,16 @@ main.main-flex {
 }
 .hangman-drawing {
   position: relative;
+  left: 25px;
   margin: 10px auto;
-  top: 20px;
-  left: 0;
-  bottom: 0;
-  right: 0;
   width: 200px;
-  height: 200px;
+  height: 220px;
 }
 /* * DRAWING */
 .rope{
     position: absolute;
     background-color: wheat;
-    width: 10px;
+    width: 5px;
     height: 100px;
     top: -50px;
     left: 68px;
