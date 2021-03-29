@@ -1,7 +1,8 @@
 :root {
   --backgroundColor: rgb(28, 82, 93);
-  --keyColor: rgb(53, 96, 103);
-  --disabledLetter: rgg(36, 86, 94);
+  --keyColor: #48747b;
+  --disabledLetter: #1a444b;
+  --ropeColor: #4ecdc4;
   --mikeGreen: #aed137;
 }
 * {
@@ -15,7 +16,9 @@ main.main-flex {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  height: 100vh;
 }
+
 .game-container {
   display: flex;
   flex-direction: column;
@@ -35,13 +38,13 @@ main.main-flex {
   height: 220px;
 }
 /* * DRAWING */
-.rope{
-    position: absolute;
-    background-color: wheat;
-    width: 5px;
-    height: 100px;
-    top: -50px;
-    left: 68px;
+.rope {
+  position: absolute;
+  background-color: wheat;
+  width: 5px;
+  height: 100px;
+  top: -50px;
+  left: 68px;
 }
 
 .horn {
@@ -342,4 +345,8 @@ main.main-flex {
     line-height: 36px;
     font-size: 24px;
   }
+}
+
+.hidden {
+  display: none !important;
 }

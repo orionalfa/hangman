@@ -6,12 +6,73 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hangman</title>
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/startEnd_screen.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <main class="main-flex">
-        <div class="game-container">
+        <div class="start-game-screen hidden">
+            <div id="start-container" class="startEnd-container">
+                <div class="game-name-container">
+                    <p class="letter-gameName">H</p>
+                    <p class="letter-gameName">A</p>
+                    <p class="letter-gameName">N</p>
+                    <p class="letter-gameName">G</p>
+                    <p class="letter-gameName"></p>
+                    <p class="letter-gameName">A</p>
+                    <p class="letter-gameName">N</p>
+                </div>
+                <div id="usr-form" class="usr-form-container">
+                    <input type="text" name="username" id="username" placeholder="Choose a username">
+                    <input type="submit" name="startbtn" id="startbtn" value="START">
+                </div>
+            </div>
+        </div>
+
+        <div class="start-game-screen winEnd-screen hidden">
+            <div id="youWon-container" class="startEnd-container">
+                <div class="happy-mike"></div>
+                <div class="finalContent-container">
+                    <div class="finalMsg-container">
+                        <p class="letter-gameName">Y</p>
+                        <p class="letter-gameName">O</p>
+                        <p class="letter-gameName">U</p>
+                        <p class="letter-gameName"></p>
+                        <p class="letter-gameName">W</p>
+                        <p class="letter-gameName">I</p>
+                        <p class="letter-gameName">N</p>
+                        <p class="letter-gameName">!</p>
+                    </div>
+                    <div class="timeMsg-container">
+                        <p id="final-score" class="time-msg">You did it in 15 seconds</p>
+                    </div>
+                    <button class="endScreen-btn">PLAY AGAIN</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="start-game-screen loseEnd-screen">
+            <div id="youLost-container" class="startEnd-container">
+                <div class="sad-mike"></div>
+                <div class="finalContent-container">
+                    <div class="finalMsg-container">
+                        <p class="letter-gameName">Y</p>
+                        <p class="letter-gameName">O</p>
+                        <p class="letter-gameName">U</p>
+                        <p class="letter-gameName"></p>
+                        <p class="letter-gameName">L</p>
+                        <p class="letter-gameName">O</p>
+                        <p class="letter-gameName">S</p>
+                        <p class="letter-gameName">E</p>
+                    </div>
+                    <button class="endScreen-btn">PLAY AGAIN</button>
+                </div>
+            </div>
+        </div>
+        
+
+        <div class="game-container hidden">
             <div class="hangman-drawing">
                 <div class="rope"> </div>
                 <div class="horn"> </div>
