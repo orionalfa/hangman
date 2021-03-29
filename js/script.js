@@ -8,8 +8,16 @@ function isLetterInWordAndWhere(letter,word){
     return array;
 }
 
+/* Display Mike Piece */
+/* variables */
+var numMikePiece = 0;
+const mikeBody = document.querySelector('.hangman-drawing');
+/* Main function */
 function displayMikePiece(){
-
+    if (numMikePiece < 6) { /* to avoid bugs */
+        numMikePiece += 1;
+        mikeBody.children[numMikePiece].classList.remove('transparent');
+    }
 }
 
 function displayLetterInPositions(letter, positions, letterBoxElements){
@@ -57,3 +65,19 @@ function keyboardLetterTriggers(event){
 
 document.onkeypress = keyboardLetterTriggers;
 
+/* Set game start */
+/* constants used */
+const gameWordContainer = document.querySelector('.game-word');
+/* Main function */
+function gameStart (gameWord) {
+    
+    for (let i = 0; i < gameWord.length; i++) {
+        const newElement = document.createElement('div');
+        newElement.classList.add('game-letter');
+        newElement.innerHTML = ' ';
+        gameWordContainer.appendChild(newElement);
+    }
+}
+/* Testing code */
+const tempGameWord = 'PRUEBA';
+gameStart(tempGameWord);
