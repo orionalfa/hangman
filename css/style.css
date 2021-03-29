@@ -10,6 +10,9 @@
   box-sizing: border-box;
   font-family: "Montserrat", sans-serif;
 }
+.transparent{
+  opacity: 0;
+}
 
 main.main-flex {
   display: flex;
@@ -66,6 +69,7 @@ main.main-flex {
   height: 150px;
   background: #aed137;
   border-radius: 100%;
+  transition: 1s opacity;
 }
 
 .head:before {
@@ -88,6 +92,9 @@ main.main-flex {
   width: 120px;
   height: 120px;
   border-radius: 100%;
+}
+.face {
+  transition: 1s opacity;
 }
 
 .eye {
@@ -151,6 +158,7 @@ main.main-flex {
   background: var(--mikeGreen);
   border-radius: 10px;
   transform: rotate(140deg);
+  transition: 1s opacity;
 }
 
 .hand.right {
@@ -166,6 +174,7 @@ main.main-flex {
   width: 20px;
   height: 60px;
   background: var(--mikeGreen);
+  transition: 1s opacity;
 }
 
 .leg:before {
