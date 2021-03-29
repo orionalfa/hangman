@@ -67,7 +67,6 @@ setScreenKeysEventListeners();
 
 /** EVENT LISTENERS (keyboard)*/
 
-<<<<<<< HEAD
 // OBJECT PLAYERS
 
 // Let where store our data
@@ -129,12 +128,10 @@ function updatePlayers(){
 
 
 
-=======
 function keyboardLetterTriggers(event){
     keyNum=event.which;
     console.log(String.fromCharCode(keyNum));
 }
->>>>>>> master
 
 document.onkeypress = keyboardLetterTriggers;
 
