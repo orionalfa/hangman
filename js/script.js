@@ -2,7 +2,19 @@
 var diffLevel = 10;
 var letterBoxElements = [];
 var gameWordNum;
+var numMikePiece = 0;
+var playersData = [];
+
+/* constants used */
 const gameWordContainer = document.querySelector('.game-word');
+const startButton = document.getElementById('startbtn');
+const startGameScreen = document.querySelector('.start-game-screen');
+const nextLevelBtn = document.querySelector('#nextLevelBtn');
+const mikeBody = document.querySelector('.hangman-drawing');
+const showThePlayersNames = document.getElementsByClassName(".name-player");
+const showThePlayersTime = document.getElementsByClassName(".name-time");
+
+
 /* Possible game words declaration */
 var wordsArray = [];
 
@@ -30,8 +42,6 @@ function isLetterInWordAndWhere(letter, word) {
 
 /* Display Mike Piece */
 /* variables */
-var numMikePiece = 0;
-const mikeBody = document.querySelector('.hangman-drawing');
 /* Main function */
 function displayMikePiece() {
     if (numMikePiece < 7) { /* to avoid bugs */
@@ -105,12 +115,9 @@ setScreenKeysEventListeners();
 
 // Let where store our data
 
-var playersData = [];
 
 // Place where we are going to show the information
 
-const showThePlayersNames = document.getElementsByClassName(".name-player");
-const showThePlayersTime = document.getElementsByClassName(".name-time");
 
 // Constructor method for our players parameters that interest us
 
@@ -157,10 +164,6 @@ function updatePlayers(){
 
 }
 
-
-
-
-
 function keyboardLetterTriggers(event){
     keyNum=event.which;
     console.log(String.fromCharCode(keyNum));
@@ -169,10 +172,6 @@ function keyboardLetterTriggers(event){
 document.onkeypress = keyboardLetterTriggers;
 
 /* Game start */
-/* constants used */
-const gameWordContainer = document.querySelector('.game-word');
-const startButton = document.getElementById('startbtn');
-const startGameScreen = document.querySelector('.start-game-screen');
 /* Event Listener */
 startButton.addEventListener('click', gameStart);
 /* Main function */
@@ -193,10 +192,7 @@ function wordSelect (diffLevel) {
     gameWordNum = randomNumSelector(max, min);
 }
 
-const nextLevelBtn = document.querySelector('#nextLevelBtn')
 nextLevelBtn.addEventListener('click', nextLevel)
-
-
 
 function nextLevel() {
     restartMike();
