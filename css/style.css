@@ -52,6 +52,7 @@ main.main-flex {
   height: 30px;
   background: #d8e0cd;
   border-radius: 30% 240% 100% 100%;
+  z-index: 1;
 }
 
 .horn.right {
