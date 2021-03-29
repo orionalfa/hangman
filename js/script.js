@@ -32,9 +32,14 @@ function displayLetterInPositions(letter, positions, letterBoxElements) {
 
 }
 
-function buildRoomForWord(wordLength) {
-    var letterBoxesList = [];
-    return letterBoxesList;
+function buildRoomForWord(gameWord) {
+        gameWordContainer.innerHTML = ' ';
+    for (let i = 0; i < gameWord.length; i++) {
+        const newElement = document.createElement('div');
+        newElement.classList.add('game-letter');
+        newElement.innerHTML = ' ';
+        gameWordContainer.appendChild(newElement);
+    }
 }
 
 /*
@@ -139,14 +144,9 @@ document.onkeypress = keyboardLetterTriggers;
 /* constants used */
 const gameWordContainer = document.querySelector('.game-word');
 /* Main function */
-function gameStart(gameWord) {
+function gameStart() {
 
-    for (let i = 0; i < gameWord.length; i++) {
-        const newElement = document.createElement('div');
-        newElement.classList.add('game-letter');
-        newElement.innerHTML = ' ';
-        gameWordContainer.appendChild(newElement);
-    }
+
 }
 /* Testing code */
 const tempGameWord = 'PRUEBA';
