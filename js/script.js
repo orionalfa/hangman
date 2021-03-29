@@ -8,8 +8,16 @@ function isLetterInWordAndWhere(letter,word){
     return array;
 }
 
+/* Display Mike Piece */
+/* variables */
+var numMikePiece = 0;
+const mikeBody = document.querySelector('.hangman-drawing');
+/* Main function */
 function displayMikePiece(){
-
+    if (numMikePiece < 6) { /* to avoid bugs */
+        numMikePiece += 1;
+        mikeBody.children[numMikePiece].classList.remove('transparent');
+    }
 }
 
 function displayLetterInPositions(letter, positions, letterBoxElements){
