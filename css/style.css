@@ -1,96 +1,271 @@
 :root {
-    --backgroundColor: rgb(28, 82, 93);
-    --keyColor: rgb(53, 96, 103);
-    --disabledLetter: rgg(36, 86, 94);
+  --backgroundColor: rgb(28, 82, 93);
+  --keyColor: rgb(53, 96, 103);
+  --disabledLetter: rgg(36, 86, 94);
+  --mikeGreen: #aed137;
 }
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-family: 'Montserrat', sans-serif;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
 }
 
-main.main-flex{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+main.main-flex {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
-.game-container{
-    display: flex;
-    flex-direction: column;
-    align-content: center;
-    width: 70vw;
-    background-color: var(--backgroundColor);
+.game-container {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  width: 70vw;
+  background-color: var(--backgroundColor);
 }
-.scores-container{
-    width: 30vw;
-    background-color: thistle; /* Temporal */
+.scores-container {
+  width: 30vw;
+  background-color: thistle; /* Temporal */
 }
-.hangman-drawing{
-
+.hangman-drawing {
+  position: relative;
+  left: 25px;
+  margin: 10px auto;
+  width: 200px;
+  height: 220px;
 }
-.game-word{
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin: 20px 0;
-}
-.game-letter{
-    border-bottom: white 4px solid;
-    width: 55px;
-    height: 24px;
-}
-.abecedary{
-    margin: 20px 0;
-}
-.abecedary-line{
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin: 10px 0;
-}
-.abecedary-letter{
-    color: white;
-    background-color: var(--keyColor);
-    padding: 10px;
-    width: 65px;
-    height: 65px;
-    border-radius: 5px;
-    text-align: center;
-    line-height: 46px;
-    font-size: 25px;
-    font-weight: 300;
-}
-.letter-disabled{
-    background-color: var(--disabledLetter);
+/* * DRAWING */
+.rope{
+    position: absolute;
+    background-color: wheat;
+    width: 5px;
+    height: 100px;
+    top: -50px;
+    left: 68px;
 }
 
+.horn {
+  position: absolute;
+  top: 3px;
+  left: 28px;
+  width: 20px;
+  height: 30px;
+  background: #d8e0cd;
+  border-radius: 30% 240% 100% 100%;
+}
 
-@media only screen and (max-width: 480px) { /* Phones */
-.game-container{
+.horn.right {
+  border-radius: 240% 30% 100% 100%;
+  left: 100px;
+}
+
+.head {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  background: #aed137;
+  border-radius: 100%;
+}
+
+.head:before {
+  content: "";
+  position: absolute;
+  top: 20px;
+  left: 33px;
+  background: var(--mikeGreen);
+  width: 120px;
+  height: 120px;
+  border-radius: 100%;
+}
+
+.head:after {
+  content: "";
+  position: absolute;
+  top: 20px;
+  left: -2px;
+  background: var(--mikeGreen);
+  width: 120px;
+  height: 120px;
+  border-radius: 100%;
+}
+
+.eye {
+  z-index: 2;
+  position: absolute;
+  top: 24px;
+  left: 33px;
+  background: #fff;
+  width: 80px;
+  height: 80px;
+  border-radius: 100%;
+}
+
+.iris {
+  position: absolute;
+  top: 9px;
+  left: 9px;
+  width: 60px;
+  height: 60px;
+  background: #199e6c;
+  border-radius: 100%;
+}
+
+.iris:before {
+  content: "";
+  position: absolute;
+  left: 45px;
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-left: 20px solid #fff;
+  border-bottom: 10px solid transparent;
+}
+
+.mouth {
+  position: absolute;
+  top: 100px;
+  left: 60px;
+  width: 30px;
+  height: 30px;
+  background: #176a46;
+  border-radius: 100%;
+}
+
+.mouth:after {
+  z-index: 0;
+  content: "";
+  position: absolute;
+  top: -10px;
+  background: var(--mikeGreen);
+  width: 30px;
+  height: 30px;
+}
+
+.hand {
+  position: absolute;
+  top: 20px;
+  left: -10px;
+  width: 20px;
+  height: 100px;
+  background: var(--mikeGreen);
+  border-radius: 10px;
+  transform: rotate(140deg);
+}
+
+.hand.right {
+  transform: rotate(40deg);
+  top: 20px;
+  left: 140px;
+}
+
+.leg {
+  position: absolute;
+  top: 140px;
+  left: 43px;
+  width: 20px;
+  height: 60px;
+  background: var(--mikeGreen);
+}
+
+.leg:before {
+  content: "";
+  position: absolute;
+  top: 50px;
+  left: -5px;
+  width: 30px;
+  height: 20px;
+  border-radius: 200% 200% 100% 100%;
+  background: var(--mikeGreen);
+}
+
+.nail {
+  position: absolute;
+  top: 64px;
+  width: 5px;
+  height: 5px;
+  background: #fff;
+  border-radius: 10px;
+}
+
+.nail.one {
+  left: 8px;
+}
+
+.nail.two {
+  left: 16px;
+}
+
+.leg.two {
+  left: 85px;
+}
+
+/* * GAME WORD */
+
+.game-word {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px 0;
+}
+.game-letter {
+  border-bottom: white 4px solid;
+  width: 55px;
+  height: 24px;
+}
+
+/* * KEYBOARD */
+
+.keyboard {
+  margin: 20px 0;
+}
+.keyboard-line {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 10px 0;
+}
+.keyboard-letter {
+  color: white;
+  background-color: var(--keyColor);
+  padding: 10px;
+  width: 65px;
+  height: 65px;
+  border-radius: 5px;
+  text-align: center;
+  line-height: 46px;
+  font-size: 25px;
+  font-weight: 300;
+}
+.letter-disabled {
+  background-color: var(--disabledLetter);
+}
+
+@media only screen and (max-width: 480px) {
+  /* Phones */
+  .game-container {
     width: 100vw;
-}
-.scores-container{
+  }
+  .scores-container {
     width: 100vw;
-}
-.game-word{
+  }
+  .game-word {
     display: flex;
     gap: 5px;
     margin: 10px 0;
-}
-.game-letter{
+  }
+  .game-letter {
     border-bottom: white 2px solid;
     width: 26px;
     height: 26px;
-}
-.abecedary{
+  }
+  .keyboard {
     margin: 20px 0;
-}
-.abecedary-line{
+  }
+  .keyboard-line {
     gap: 5px;
     margin: 5px 0;
-}
-.abecedary-letter{
+  }
+  .keyboard-letter {
     padding: 5px;
     width: 30px;
     height: 30px;
@@ -98,71 +273,73 @@ main.main-flex{
     text-align: center;
     line-height: 20px;
     font-size: 16px;
+  }
 }
+@media only screen and (max-width: 768px) {
+  /* Tablets */
+  .game-container {
+    width: 100vw;
+  }
+  .scores-container {
+    width: 100vw;
+  }
+  .game-word {
+    display: flex;
+    gap: 8px;
+    margin: 10px 0;
+  }
+  .game-letter {
+    border-bottom: white 2px solid;
+    width: 40px;
+    height: 40px;
+  }
+  .keyboard {
+    margin: 20px 0;
+  }
+  .keyboard-line {
+    gap: 8px;
+    margin: 8px 0;
+  }
+  .keyboard-letter {
+    padding: 5px;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    line-height: 30px;
+    font-size: 22px;
+  }
 }
-@media only screen and (max-width: 768px) { /* Tablets */
-    .game-container{
-        width: 100vw;
-    }
-    .scores-container{
-        width: 100vw;
-    }
-    .game-word{
-        display: flex;
-        gap: 8px;
-        margin: 10px 0;
-    }
-    .game-letter{
-        border-bottom: white 2px solid;
-        width: 40px;
-        height: 40px;
-    }
-    .abecedary{
-        margin: 20px 0;
-    }
-    .abecedary-line{
-        gap: 8px;
-        margin: 8px 0;
-    }
-    .abecedary-letter{
-        padding: 5px;
-        width: 40px;
-        height: 40px;
-        text-align: center;
-        line-height: 30px;
-        font-size: 22px;
-    }
-}
-@media only screen and (max-width: 1400px) { /* Older laptops */
- /*    .game-container{
+@media only screen and (max-width: 1400px) {
+  /* Older laptops */
+  /*    .game-container{
         width: 100vw;
     }
     .scores-container{
         width: 100vw;
     } */
-    .game-word{
-        display: flex;
-        gap: 8px;
-        margin: 10px 0;
-    }
-    .game-letter{
-        border-bottom: white 2px solid;
-        width: 40px;
-        height: 40px;
-    }
-    .abecedary{
-        margin: 20px 0;
-    }
-    .abecedary-line{
-        gap: 8px;
-        margin: 8px 0;
-    }
-    .abecedary-letter{
-        padding: 5px;
-        width: 46px;
-        height: 46px;
-        text-align: center;
-        line-height: 36px;
-        font-size: 24px;
-    }
+  .game-word {
+    display: flex;
+    gap: 8px;
+    margin: 10px 0;
+  }
+  .game-letter {
+    border-bottom: white 2px solid;
+    width: 40px;
+    height: 40px;
+  }
+  .keyboard {
+    margin: 20px 0;
+  }
+  .keyboard-line {
+    gap: 8px;
+    margin: 8px 0;
+  }
+  .keyboard-letter {
+    padding: 5px;
+    width: 46px;
+    height: 46px;
+    text-align: center;
+    line-height: 36px;
+    font-size: 24px;
+  }
 }
