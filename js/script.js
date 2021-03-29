@@ -1,4 +1,5 @@
-
+/* Global variables */
+var diffLevel = 4;
 var letterBoxElements = [];
 /* Possible game words declaration */
 var wordsArray = [];
@@ -9,7 +10,6 @@ wordsArray[6] = ['absurd', 'avenue', 'bikini', 'boggle', 'boxcar', 'boxful', 'ca
 wordsArray[7] = ['awkward', 'buffalo', 'buffoon', 'buzzard', 'buzzing', 'croquet', 'curacao', 'disavow', 'dwarves', 'fixable', 'fuchsia', 'gnostic', 'jackpot', 'jaywalk', 'jogging', 'jukebox', 'keyhole', 'lengths', 'marquis', 'mystify', 'naphtha', 'oxidize', 'quizzes', 'rhubarb', 'scratch', 'stretch', 'stymied', 'twelfth', 'unknown', 'walkway', 'whiskey']
 wordsArray[8] = ['abruptly', 'bagpipes', 'blizzard', 'bookworm', 'buckaroo', 'daiquiri', 'dizzying', 'embezzle', 'fishhook', 'flapjack', 'flopping', 'foxglove', 'frazzled', 'frizzled', 'glowworm', 'jaundice', 'jazziest', 'jiujitsu', 'kilobyte', 'knapsack', 'mnemonic', 'nowadays', 'peekaboo', 'puzzling', 'quixotic', 'rickshaw', 'schnapps', 'strength', 'syndrome', 'twelfths', 'unworthy', 'vaporize', 'whizzing', 'whomever', 'youthful'];
 wordsArray[9] = ['bandwagon', 'beekeeper', 'buzzwords', 'cockiness', 'espionage', 'galvanize', 'haphazard', 'kiwifruit', 'megahertz', 'microwave', 'nightclub', 'numbskull', 'pneumonia', 'strengths', 'voyeurism', 'xylophone', 'yachtsman'];
-wordsArray[10] = ['fluffiness', 'fluffiness', 'fluffiness', 'fluffiness', 'fluffiness', 'fluffiness', 'fluffiness', 'fluffiness', 'fluffiness', 'fluffiness', 'fluffiness', 'fluffiness', 'fluffiness', 'fluffiness', 'fluffiness', 'fluffiness'];
 function isLetterInWordAndWhere(letter, word) {
     hasInPositions = ""; //index array[0] false is letter not in word
     //else array[0]=true and the positions of letters in string
