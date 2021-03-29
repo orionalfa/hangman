@@ -1,7 +1,15 @@
 
 var letterBoxElements = [];
+/* Possible game words declaration */
 var wordsArray = [];
 
+wordsArray[4] = ['jinx', 	'onyx', 	'quiz', 	'shiv', 	'wave', 	'wavy', 	'waxy'] ;
+wordsArray[5] = ['abyss', 	'affix', 	'askew', 	'axiom', 	'azure', 	'banjo', 	'bayou', 	'blitz', 	'buxom', 	'crypt', 	'cycle', 	'equip', 	'fjord', 	'flyby', 	'funny', 	'gabby', 	'gizmo', 	'glyph', 	'haiku', 	'ivory', 	'jazzy', 	'jelly', 	'juicy', 	'jumbo', 	'kayak', 	'kazoo', 	'khaki', 	'kiosk', 	'klutz', 	'lucky', 	'lymph', 	'nymph', 	'ovary', 	'pixel', 	'polka', 	'pshaw', 	'puppy', 	'queue', 	'quips', 	'staff', 	'topaz', 	'unzip', 	'vixen', 	'vodka', 	'waltz', 	'wimpy', 	'woozy', 	'yoked', 	'yummy', 	'zilch'];
+wordsArray[6] = ['absurd', 	'avenue', 	'bikini', 	'boggle', 	'boxcar', 	'boxful', 	'caliph', 	'cobweb', 	'dirndl', 	'duplex', 	'euouae', 	'exodus', 	'faking', 	'galaxy', 	'gazebo', 	'giaour', 	'gnarly', 	'gossip', 	'hyphen', 	'icebox', 	'injury', 	'jigsaw', 	'jockey', 	'joking', 	'jovial', 	'joyful', 	'kitsch', 	'larynx', 	'luxury', 	'matrix', 	'oxygen', 	'pajama', 	'phlegm', 	'pizazz', 	'psyche', 	'quartz', 	'quorum', 	'rhythm', 	'snazzy', 	'sphinx', 	'spritz', 	'squawk', 	'subway', 	'swivel', 	'uptown', 	'voodoo', 	'vortex', 	'wheezy', 	'wizard', 	'wyvern', 	'yippee', 	'zephyr', 	'zigzag', 	'zipper', 	'zodiac', 	'zombie'];
+wordsArray[7] = ['awkward', 	'buffalo', 	'buffoon', 	'buzzard', 	'buzzing', 	'croquet', 	'curacao', 	'disavow', 	'dwarves', 	'fixable', 	'fuchsia', 	'gnostic', 	'jackpot', 	'jaywalk', 	'jogging', 	'jukebox', 	'keyhole', 	'lengths', 	'marquis', 	'mystify', 	'naphtha', 	'oxidize', 	'quizzes', 	'rhubarb', 	'scratch', 	'stretch', 	'stymied', 	'twelfth', 	'unknown', 	'walkway', 	'whiskey']
+wordsArray[8] = ['abruptly', 	'bagpipes', 	'blizzard', 	'bookworm', 	'buckaroo', 	'daiquiri', 	'dizzying', 	'embezzle', 	'fishhook', 	'flapjack', 	'flopping', 	'foxglove', 	'frazzled', 	'frizzled', 	'glowworm', 	'jaundice', 	'jazziest', 	'jiujitsu', 	'kilobyte', 	'knapsack', 	'mnemonic', 	'nowadays', 	'peekaboo', 	'puzzling', 	'quixotic', 	'rickshaw', 	'schnapps', 	'strength', 	'syndrome', 	'twelfths', 	'unworthy', 	'vaporize', 	'whizzing', 	'whomever', 	'youthful'];
+wordsArray[9] = ['bandwagon', 	'beekeeper', 	'buzzwords', 	'cockiness', 	'espionage', 	'galvanize', 	'haphazard', 	'kiwifruit', 	'megahertz', 	'microwave', 	'nightclub', 	'numbskull', 	'pneumonia', 	'strengths', 	'voyeurism', 	'xylophone', 	'yachtsman'];
+wordsArray[10] = ['fluffiness', 	'fluffiness', 	'fluffiness', 	'fluffiness', 	'fluffiness', 	'fluffiness', 	'fluffiness', 	'fluffiness', 	'fluffiness', 	'fluffiness', 	'fluffiness', 	'fluffiness', 	'fluffiness', 	'fluffiness', 	'fluffiness', 	'fluffiness'];
 function isLetterInWordAndWhere(letter,word){
     hasInPositions=""; //index array[0] false is letter not in word
     //else array[0]=true and the positions of letters in string
