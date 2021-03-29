@@ -33,7 +33,27 @@ function randomWordSelector(max,min){
     return Math.random() * (max - min) + min;
 }
 
+/** EVENT LISTENERS */
+
+function screenLetterTriggers(event){
+    console.log(event.target.innerHTML);
+}
+
+function setScreenKeysEventListeners(){
+    var screenKeyboard = document.querySelectorAll('.keyboard-letter');
+    for (key of screenKeyboard){
+        key.onclick = screenLetterTriggers;
+    }
+}
+
+setScreenKeysEventListeners();
+
+function keyboardLetterTriggers(event){
+    keyNum=event.which;
+    console.log(String.fromCharCode(keyNum));
 
 
+}
 
+document.onkeypress = keyboardLetterTriggers;
 
