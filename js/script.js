@@ -50,7 +50,7 @@ function accessToSelectedWord(){
 }
 */
 
-function randomWordSelector(max, min) {
+function randomNumSelector(max, min) {
     
     return Math.round(Math.random() * (max - min) + min);
 }
@@ -159,5 +159,5 @@ var gameWordNum;
 function wordSelect (diffLevel) {
     const max = wordsArray[diffLevel].length;
     const min = 0;
-    gameWordNum = randomWordSelector(max, min);
+    gameWordNum = randomNumSelector(max, min);
 }
