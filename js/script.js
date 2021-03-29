@@ -187,7 +187,7 @@ function gameStart() {
 /* ! Random word number selection depending of level */
 /* Main function */
 function wordSelect (diffLevel) {
-    const max = wordsArray[diffLevel].length;
+    const max = wordsArray[diffLevel-1].length;
     const min = 0;
     gameWordNum = randomNumSelector(max, min);
 }
