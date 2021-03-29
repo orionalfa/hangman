@@ -23,9 +23,19 @@ var numMikePiece = 0;
 const mikeBody = document.querySelector('.hangman-drawing');
 /* Main function */
 function displayMikePiece() {
-    if (numMikePiece < 6) { /* to avoid bugs */
-        numMikePiece += 1;
+    if (numMikePiece < 7) { /* to avoid bugs */
         mikeBody.children[numMikePiece].classList.remove('transparent');
+        numMikePiece += 1;
+    }
+}
+
+function restartMike() {
+    let piece = 0;
+    while (piece < 7) { /* to avoid bugs */
+        if (!mikeBody.children[piece].classList.contains('transparent')) {
+            mikeBody.children[piece].classList.add('transparent');
+        }
+        piece += 1;
     }
 }
 
@@ -159,4 +169,18 @@ function wordSelect (diffLevel) {
     const max = wordsArray[diffLevel].length;
     const min = 0;
     gameWordNum = randomNumSelector(max, min);
+}
+
+const nextLevelBtn = document.querySelector('#nextLevelBtn')
+nextLevelBtn.addEventListener('click', nextLevel)
+
+
+
+function nextLevel() {
+    restartMike();
+    const youWinScreen = document.querySelector('#youWon-container');
+    youWinScreen.classList.add('hidden');
+    diffLevel++;
+    wordSelect(diffLevel);
+    buildRoomForWord(diffLevel);
 }

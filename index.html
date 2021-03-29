@@ -12,8 +12,8 @@
 </head>
 <body>
     <main class="main-flex">
-        <div class="start-game-screen">
-            <div id="start-container" class="startEnd-container hidden">
+        <div class="start-game-screen hidden">
+            <div id="start-container" class="startEnd-container">
                 <div class="game-name-container">
                     <p class="letter-gameName">H</p>
                     <p class="letter-gameName">A</p>
@@ -30,8 +30,8 @@
             </div>
         </div>
 
-        <div class="start-game-screen winEnd-screen">
-            <div id="youWon-container" class="startEnd-container">
+        <div id="youWon-container" class="start-game-screen winEnd-screen">
+            <div class="startEnd-container">
                 <div class="happy-mike"></div>
                 <div class="finalContent-container">
                     <div class="finalMsg-container">
@@ -74,7 +74,7 @@
 
         <div class="game-container">
             <div class="hangman-drawing">
-                <div class="rope"> </div>
+                <div class="rope transparent"> </div>
                 <div class="head transparent"> 
                     <div class="horn"> </div>
                     <div class="horn right"> </div>
