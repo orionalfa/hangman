@@ -11,7 +11,7 @@
   box-sizing: border-box;
   font-family: "Montserrat", sans-serif;
 }
-.transparent{
+.transparent {
   opacity: 0;
 }
 
@@ -255,61 +255,59 @@ main.main-flex {
 
 /* RANKING */
 
-.scores-container{
-  background-color: #48747B;
+.scores-container {
+  background-color: #48747b;
 }
 
-.score-line{
+.score-line {
   display: flex;
   justify-content: center;
   gap: 10px;
   margin-top: 2.1em;
 }
 
-.score-letter{
+.score-letter {
   border-bottom: 3px solid white;
   width: 32px;
   height: 24px;
   margin-top: 85px;
 }
 
-.letter-title-ranking{
+.letter-title-ranking {
   color: white;
   text-align: center;
   font-size: 20px;
-  font-weight: bold
+  font-weight: bold;
 }
 
-.names-container{
+.names-container {
   margin-top: 4em;
   margin-left: 4.5em;
 }
 
-.names-score-container-one{
+.names-score-container-one {
   height: 40px;
   width: 400px;
-  background-color: #1A444B;
+  background-color: #1a444b;
   border-radius: 5px;
   margin-bottom: 2em;
 }
 
-.data{
+.data {
   display: flex;
   justify-content: space-between;
   align-items: center;
   color: white;
-  padding-top: .6em;
+  padding-top: 0.6em;
 }
 
-.data .name-player{
+.data .name-player {
   padding-left: 1em;
 }
 
-.data .name-time{
+.data .name-time {
   padding-right: 1em;
 }
-
-
 
 @media only screen and (max-width: 480px) {
   /* Phones */
@@ -416,5 +414,6 @@ main.main-flex {
 }
 
 .hidden {
-  transform: scale(0);
+  visibility: hidden !important;
+  opacity: 0 !important;
 }
