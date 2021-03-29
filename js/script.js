@@ -34,9 +34,19 @@ var numMikePiece = 0;
 const mikeBody = document.querySelector('.hangman-drawing');
 /* Main function */
 function displayMikePiece() {
-    if (numMikePiece < 6) { /* to avoid bugs */
-        numMikePiece += 1;
+    if (numMikePiece < 7) { /* to avoid bugs */
         mikeBody.children[numMikePiece].classList.remove('transparent');
+        numMikePiece += 1;
+    }
+}
+
+function restartMike() {
+    let piece = 0;
+    while (piece < 7) { /* to avoid bugs */
+        if (!mikeBody.children[piece].classList.contains('transparent')) {
+            mikeBody.children[piece].classList.add('transparent');
+        }
+        piece += 1;
     }
 }
 
@@ -99,9 +109,8 @@ var playersData = [];
 
 // Place where we are going to show the information
 
-var showThePlayersNames = document.getElementsByClassName(".name-player");
-
-var showThePlayersTime = document.getElementsByClassName(".name-time");
+const showThePlayersNames = document.getElementsByClassName(".name-player");
+const showThePlayersTime = document.getElementsByClassName(".name-time");
 
 // Constructor method for our players parameters that interest us
 
@@ -114,13 +123,13 @@ class Players{
 
 // We create the function for our players
 
-function createPlayers(){
-    var name = document.getElementsById("").value; // We get the name os the player
-    var time = document.getElementsById("").value; // we get the time score
+function createPlayers(username, time){
+   /*  const name = document.getElementsById("").value; // We get the name os the player
+    const time = document.getElementsById("").value; // we get the time score */
 
     // Players object
 
-    var player = new Players(name, time);
+    var player = new Players(username, time);
     playersData.push(player);
 
     updatePlayers();
@@ -132,7 +141,7 @@ function updatePlayers(){
     showThePlayersNames.innerHTML = "";
     showThePlayersTime.innerHTML = "";
 
-    var liPlayer = docume.createElemnent("li");
+    var liPlayer = document.createElement("li");
 
     // for loop to run the array and show the info
 
@@ -159,15 +168,22 @@ function keyboardLetterTriggers(event){
 
 document.onkeypress = keyboardLetterTriggers;
 
-/* Set game start */
+/* Game start */
 /* constants used */
+const gameWordContainer = document.querySelector('.game-word');
+const startButton = document.getElementById('startbtn');
+const startGameScreen = document.querySelector('.start-game-screen');
+/* Event Listener */
+startButton.addEventListener('click', gameStart);
 /* Main function */
 function gameStart() {
+    wordSelect(diffLevel);
     buildRoomForWord(diffLevel);
+    startGameScreen.classList.add('hidden');
+    const name = document.getElementById("username").value; // We get the name os the player
+    createPlayers(name,'Currently playing');
+    // Verify some text in input
 }
-/* Testing code */
-const tempGameWord = 'PRUEBA';
-gameStart(10);
 
 /* ! Random word number selection depending of level */
 /* Main function */
@@ -175,4 +191,18 @@ function wordSelect (diffLevel) {
     const max = wordsArray[diffLevel].length;
     const min = 0;
     gameWordNum = randomNumSelector(max, min);
+}
+
+const nextLevelBtn = document.querySelector('#nextLevelBtn')
+nextLevelBtn.addEventListener('click', nextLevel)
+
+
+
+function nextLevel() {
+    restartMike();
+    const youWinScreen = document.querySelector('#youWon-container');
+    youWinScreen.classList.add('hidden');
+    diffLevel++;
+    wordSelect(diffLevel);
+    buildRoomForWord(diffLevel);
 }
