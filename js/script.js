@@ -32,9 +32,9 @@ function displayLetterInPositions(letter, positions, letterBoxElements) {
 
 }
 
-function buildRoomForWord(gameWord) {
+function buildRoomForWord(diffLevel) {
         gameWordContainer.innerHTML = ' ';
-    for (let i = 0; i < gameWord.length; i++) {
+    for (let i = 0; i < diffLevel; i++) {
         const newElement = document.createElement('div');
         newElement.classList.add('game-letter');
         newElement.innerHTML = ' ';
