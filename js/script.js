@@ -33,7 +33,7 @@ function randomWordSelector(max,min){
     return Math.random() * (max - min) + min;
 }
 
-/** EVENT LISTENERS */
+/** EVENT LISTENERS (screen)*/
 
 function screenLetterTriggers(event){
     console.log(event.target.innerHTML);
@@ -48,11 +48,11 @@ function setScreenKeysEventListeners(){
 
 setScreenKeysEventListeners();
 
+/** EVENT LISTENERS (keyboard)*/
+
 function keyboardLetterTriggers(event){
     keyNum=event.which;
     console.log(String.fromCharCode(keyNum));
-
-
 }
 
 document.onkeypress = keyboardLetterTriggers;
