@@ -13,7 +13,7 @@
 <body>
     <main class="main-flex">
         <div class="start-game-screen">
-            <div id="start-container" class="startEnd-container">
+            <div id="start-container" class="startEnd-container hidden">
                 <div class="game-name-container">
                     <p class="letter-gameName">H</p>
                     <p class="letter-gameName">A</p>
@@ -30,7 +30,7 @@
             </div>
         </div>
 
-        <div class="start-game-screen winEnd-screen hidden">
+        <div class="start-game-screen winEnd-screen">
             <div id="youWon-container" class="startEnd-container">
                 <div class="happy-mike"></div>
                 <div class="finalContent-container">
@@ -47,7 +47,7 @@
                     <div class="timeMsg-container">
                         <p id="final-score" class="time-msg">You did it in 15 seconds</p>
                     </div>
-                    <button class="endScreen-btn">PLAY AGAIN</button>
+                    <button id="nextLevelBtn" class="endScreen-btn">NEXT LEVEL</button>
                 </div>
             </div>
         </div>
