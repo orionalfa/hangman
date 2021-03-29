@@ -46,7 +46,8 @@ function accessToSelectedWord(){
 */
 
 function randomWordSelector(max, min) {
-    return Math.random() * (max - min) + min;
+    
+    return Math.round(Math.random() * (max - min) + min);
 }
 
 /* Set game start */
@@ -65,3 +66,13 @@ function gameStart(gameWord) {
 /* Testing code */
 const tempGameWord = 'PRUEBA';
 gameStart(tempGameWord);
+
+/* ! Random word number selection depending of level */
+/* Variables */
+var gameWordNum;
+/* Main function */
+function wordSelect (diffLevel) {
+    const max = wordsArray[diffLevel].length;
+    const min = 0;
+    gameWordNum = randomWordSelector(max, min);
+}
