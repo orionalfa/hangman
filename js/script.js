@@ -1,6 +1,7 @@
 /* Global variables */
 var diffLevel = 4;
 var letterBoxElements = [];
+var gameWordNum;
 /* Possible game words declaration */
 var wordsArray = [];
 
@@ -153,8 +154,6 @@ const tempGameWord = 'PRUEBA';
 gameStart(tempGameWord);
 
 /* ! Random word number selection depending of level */
-/* Variables */
-var gameWordNum;
 /* Main function */
 function wordSelect (diffLevel) {
     const max = wordsArray[diffLevel].length;
