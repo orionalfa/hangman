@@ -240,6 +240,64 @@ main.main-flex {
   background-color: var(--disabledLetter);
 }
 
+/* RANKING */
+
+.scores-container{
+  background-color: #48747B;
+}
+
+.score-line{
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 2.1em;
+}
+
+.score-letter{
+  border-bottom: 3px solid white;
+  width: 32px;
+  height: 24px;
+  margin-top: 85px;
+}
+
+.letter-title-ranking{
+  color: white;
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold
+}
+
+.names-container{
+  margin-top: 4em;
+  margin-left: 4.5em;
+}
+
+.names-score-container-one{
+  height: 40px;
+  width: 400px;
+  background-color: #1A444B;
+  border-radius: 5px;
+  margin-bottom: 2em;
+}
+
+.data{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  padding-top: .6em;
+}
+
+.data .name-player{
+  padding-left: 1em;
+}
+
+.data .name-time{
+  padding-right: 1em;
+}
+
+
+
 @media only screen and (max-width: 480px) {
   /* Phones */
   .game-container {
