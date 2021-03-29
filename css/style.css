@@ -1,7 +1,8 @@
 :root {
   --backgroundColor: rgb(28, 82, 93);
-  --keyColor: rgb(53, 96, 103);
-  --disabledLetter: rgg(36, 86, 94);
+  --keyColor: #48747b;
+  --disabledLetter: #1a444b;
+  --ropeColor: #4ecdc4;
   --mikeGreen: #aed137;
 }
 * {
@@ -10,12 +11,17 @@
   box-sizing: border-box;
   font-family: "Montserrat", sans-serif;
 }
+.transparent{
+  opacity: 0;
+}
 
 main.main-flex {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  height: 100vh;
 }
+
 .game-container {
   display: flex;
   flex-direction: column;
@@ -35,13 +41,13 @@ main.main-flex {
   height: 220px;
 }
 /* * DRAWING */
-.rope{
-    position: absolute;
-    background-color: wheat;
-    width: 5px;
-    height: 100px;
-    top: -50px;
-    left: 68px;
+.rope {
+  position: absolute;
+  background-color: wheat;
+  width: 5px;
+  height: 100px;
+  top: -50px;
+  left: 68px;
 }
 
 .horn {
@@ -52,6 +58,7 @@ main.main-flex {
   height: 30px;
   background: #d8e0cd;
   border-radius: 30% 240% 100% 100%;
+  z-index: 1;
 }
 
 .horn.right {
@@ -65,6 +72,7 @@ main.main-flex {
   height: 150px;
   background: #aed137;
   border-radius: 100%;
+  transition: 1s opacity;
 }
 
 .head:before {
@@ -87,6 +95,9 @@ main.main-flex {
   width: 120px;
   height: 120px;
   border-radius: 100%;
+}
+.face {
+  transition: 1s opacity;
 }
 
 .eye {
@@ -150,6 +161,7 @@ main.main-flex {
   background: var(--mikeGreen);
   border-radius: 10px;
   transform: rotate(140deg);
+  transition: 1s opacity;
 }
 
 .hand.right {
@@ -165,6 +177,7 @@ main.main-flex {
   width: 20px;
   height: 60px;
   background: var(--mikeGreen);
+  transition: 1s opacity;
 }
 
 .leg:before {
@@ -400,4 +413,8 @@ main.main-flex {
     line-height: 36px;
     font-size: 24px;
   }
+}
+
+.hidden {
+  transform: scale(0);
 }
