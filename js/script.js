@@ -33,7 +33,19 @@ function randomWordSelector(max,min){
     return Math.random() * (max - min) + min;
 }
 
-
-
-
-
+/* Set game start */
+/* constants used */
+const gameWordContainer = document.querySelector('.game-word');
+/* Main function */
+function gameStart (gameWord) {
+    
+    for (let i = 0; i < gameWord.length; i++) {
+        const newElement = document.createElement('div');
+        newElement.classList.add('game-letter');
+        newElement.innerHTML = ' ';
+        gameWordContainer.appendChild(newElement);
+    }
+}
+/* Testing code */
+const tempGameWord = 'PRUEBA';
+gameStart(tempGameWord);
