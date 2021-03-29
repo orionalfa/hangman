@@ -224,6 +224,12 @@ main.main-flex {
   border-bottom: white 4px solid;
   width: 55px;
   height: 24px;
+  font-size: 25px;
+  font-weight: 700;
+  color: white;
+  text-align: center;
+  text-transform: uppercase;
+
 }
 
 /* * KEYBOARD */

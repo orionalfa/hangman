@@ -1,7 +1,8 @@
 /* Global variables */
-var diffLevel = 4;
+var diffLevel = 10;
 var letterBoxElements = [];
 var gameWordNum;
+const gameWordContainer = document.querySelector('.game-word');
 /* Possible game words declaration */
 var wordsArray = [];
 
@@ -11,11 +12,21 @@ wordsArray[6] = ['absurd', 'avenue', 'bikini', 'boggle', 'boxcar', 'boxful', 'ca
 wordsArray[7] = ['awkward', 'buffalo', 'buffoon', 'buzzard', 'buzzing', 'croquet', 'curacao', 'disavow', 'dwarves', 'fixable', 'fuchsia', 'gnostic', 'jackpot', 'jaywalk', 'jogging', 'jukebox', 'keyhole', 'lengths', 'marquis', 'mystify', 'naphtha', 'oxidize', 'quizzes', 'rhubarb', 'scratch', 'stretch', 'stymied', 'twelfth', 'unknown', 'walkway', 'whiskey']
 wordsArray[8] = ['abruptly', 'bagpipes', 'blizzard', 'bookworm', 'buckaroo', 'daiquiri', 'dizzying', 'embezzle', 'fishhook', 'flapjack', 'flopping', 'foxglove', 'frazzled', 'frizzled', 'glowworm', 'jaundice', 'jazziest', 'jiujitsu', 'kilobyte', 'knapsack', 'mnemonic', 'nowadays', 'peekaboo', 'puzzling', 'quixotic', 'rickshaw', 'schnapps', 'strength', 'syndrome', 'twelfths', 'unworthy', 'vaporize', 'whizzing', 'whomever', 'youthful'];
 wordsArray[9] = ['bandwagon', 'beekeeper', 'buzzwords', 'cockiness', 'espionage', 'galvanize', 'haphazard', 'kiwifruit', 'megahertz', 'microwave', 'nightclub', 'numbskull', 'pneumonia', 'strengths', 'voyeurism', 'xylophone', 'yachtsman'];
+
+
 function isLetterInWordAndWhere(letter, word) {
-    hasInPositions = ""; //index array[0] false is letter not in word
-    //else array[0]=true and the positions of letters in string
-    return array;
+    hasLetterInPositions = [false];
+
+    for (let i=0; i<word.length; i++){
+        if (letter === word[i]){
+            hasLetterInPositions[0]=true;
+            hasLetterInPositions.push(i);
+        }
+    }
+    //console.log(hasLetterInPositions);
+    return hasLetterInPositions;
 }
+
 
 /* Display Mike Piece */
 /* variables */
@@ -29,9 +40,16 @@ function displayMikePiece() {
     }
 }
 
-function displayLetterInPositions(letter, positions, letterBoxElements) {
-
+function displayLetterInPositions(letter, positions) {
+    const letterBoxes = gameWordContainer.children;
+    console.log(letterBoxes);
+    for (i of positions){
+        letterBoxes[i].innerHTML = letter;
+    }
 }
+
+
+
 
 function buildRoomForWord(diffLevel) {
         gameWordContainer.innerHTML = ' ';
@@ -143,15 +161,13 @@ document.onkeypress = keyboardLetterTriggers;
 
 /* Set game start */
 /* constants used */
-const gameWordContainer = document.querySelector('.game-word');
 /* Main function */
 function gameStart() {
-
-
+    buildRoomForWord(diffLevel);
 }
 /* Testing code */
 const tempGameWord = 'PRUEBA';
-gameStart(tempGameWord);
+gameStart(10);
 
 /* ! Random word number selection depending of level */
 /* Main function */
