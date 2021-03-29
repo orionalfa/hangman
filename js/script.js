@@ -164,6 +164,7 @@ function gameStart() {
     startGameScreen.classList.add('hidden');
     const name = document.getElementById("username").value; // We get the name os the player
     createPlayers(name,'Currently playing');
+    // Verify some text in input
 }
 
 /* ! Random word number selection depending of level */
