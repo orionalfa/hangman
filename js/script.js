@@ -14,8 +14,8 @@ const startGameScreen = document.querySelector('#start-container');
 const nextLevelBtn = document.querySelector('#nextLevelBtn');
 const endGameBtn = document.querySelector('#endGameBtn');
 const mikeBody = document.querySelector('.hangman-drawing');
-const showThePlayersNames = document.getElementsByClassName(".name-player");
-const showThePlayersTime = document.getElementsByClassName(".name-time");
+const showThePlayersNames = document.querySelector(".name-player");
+const showThePlayersTime = document.querySelector(".name-time");
 const WinLevelScreen = document.querySelector('#wonThisLevel-container');
 const LoseScreen = document.querySelector('#youLost-container');
 const playAgainBtn = document.querySelector('#playAgain-btn');
@@ -158,59 +158,6 @@ function keyboardLetterTriggers(event) {
     }
 }
 
-// OBJECT PLAYERS
-
-// Constructor method for our players parameters that interest us
-
-class Players {
-    constructor(name, time, level) {
-        this.name = name;
-        this.time = time;
-        this.level = level;
-    }
-}
-
-// Function to update the data and show the info
-
-function displayPlayers() {
-    showThePlayersNames.innerHTML = "";
-    showThePlayersTime.innerHTML = "";
-
-    //var liPlayer = document.createElement("div");
-
-    // for loop to run the array and show the info
-
-    for (let i = 0; i < playersData.length; i++) {
-        showThePlayersNames.innerHTML = showThePlayersNames.innerHTML +
-            '<p>' + playersData[i].name + '</p>' 
-            
-    };
-
-    function computeTime(){   // funcion calcular tiempo
-
-    }
-        
-    for (let j = 0; j < playersData.length; j++) {
-            showThePlayersTime.innerHTML = showThePlayersTime.innerHTML +
-                '<li>' + playersData[j].time + '</li>'
-    };  
-
-}
-
-
-function createPlayers(name, time, level) {
-
-    // const time = document.getElementsById("").value; 
-     
-
-    // Players object
-
-    var player = new Players(name, time, level);
-    playersData.push(player);
-
-    displayPlayers();
-   
-}
 
 /* Game start */
 /* Event Listener */
@@ -222,10 +169,12 @@ function gameStart() {
     buildRoomForWord(diffLevel);
     startGameScreen.classList.add('hidden');
     const name = document.getElementById("username").value; 
-    createPlayers(name, 'Currently playing');
+    createPlayers(name, 'Currently playing', "4");
     document.onkeypress = keyboardLetterTriggers;
     // Verify some text in input
 }
+
+
 
 /* ! Random word number selection depending of level */
 /* Main function */
@@ -261,6 +210,7 @@ function goToStartScreen() {
     startGameScreen.classList.remove('hidden');
 }
 
+
 function goToNextLevel() {
     restartMike();
     restoreLetters();
@@ -278,4 +228,41 @@ function disableLetter (letterToDisable) {
             letter.classList.add('letter-disabled');
         }
     }
+}
+// OBJECT PLAYERS
+
+// Constructor method for our players parameters that interest us
+
+class Players {
+    constructor(name, time, level) {
+        this.name = name;
+        this.time = time;
+        this.level = level;
+    }
+}
+
+function createPlayers(name, time, level) {
+    // Players object
+    
+    var player = new Players(name, time, level);
+    playersData.push(player);
+    createPlayerDiv(name, time, level);
+}
+
+function createPlayerDiv(name, time, level){
+    const whereMyDiv = document.querySelector(".names-container");
+    const newDiv = document.createElement("div");
+    newDiv.classList.add("names-score-container");
+    const namePlayer = document.createElement("div");
+    const nameTime = document.createElement("div");
+    const nameLevel = document.createElement("div");
+    namePlayer.innerHTML = name;
+    nameLevel.innerHTML = "Level: " + level;
+    nameTime.innerHTML = "Time: " + time;
+    newDiv.appendChild(namePlayer);
+    newDiv.appendChild(nameLevel);
+    newDiv.appendChild(nameTime);
+    whereMyDiv.appendChild(newDiv);
+
+    
 }

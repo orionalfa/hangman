@@ -304,28 +304,19 @@ main.main-flex {
   margin-left: 4.5em;
 }
 
-.names-score-container-one {
+.names-score-container{
   height: 40px;
-  width: 75%;
+  width: 85%;
   background-color: #1a444b;
   border-radius: 5px;
   margin-bottom: 2em;
-}
-
-.data {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   color: white;
-  padding-top: 0.6em;
-}
-
-.data .name-player {
-  padding-left: 1em;
-}
-
-.data .name-time {
-  padding-right: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: .5em;
+  padding-left: .5em;
+  
 }
 
 @media only screen and (max-width: 480px) {
