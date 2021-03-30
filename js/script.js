@@ -171,6 +171,10 @@ function gameStart() {
     const name = document.getElementById("username").value; 
     createPlayers(name, 'Currently playing', "4");
     document.onkeypress = keyboardLetterTriggers;
+    restartMike();
+    restoreLetters();
+    pressedLetterArray = [];
+    currentSolvedLetters = 0;
     // Verify some text in input
 }
 
@@ -205,6 +209,7 @@ function goToStartScreen() {
     restartMike();
     restoreLetters();
     pressedLetterArray = [];
+    currentSolvedLetters = 0;
     WinLevelScreen.classList.add('hidden');
     LoseScreen.classList.add('hidden');
     startGameScreen.classList.remove('hidden');
@@ -215,6 +220,7 @@ function goToNextLevel() {
     restartMike();
     restoreLetters();
     pressedLetterArray = [];
+    currentSolvedLetters = 0;
     diffLevel++;
     wordSelect(diffLevel);
     buildRoomForWord(diffLevel);
@@ -226,6 +232,7 @@ function disableLetter (letterToDisable) {
     for (let letter of allLetters) {
         if (letterToDisable == letter.innerHTML.toLowerCase()){
             letter.classList.add('letter-disabled');
+            return disableLetter;
         }
     }
 }
