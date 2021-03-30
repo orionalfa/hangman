@@ -1,5 +1,5 @@
 /* Global variables */
-var diffLevel = 5;
+var diffLevel = 4;
 var letterBoxElements = [];
 var gameWordNum;
 var numMikePiece = 0;
@@ -97,7 +97,18 @@ function randomNumSelector(max, min) {
 /** EVENT LISTENERS (screen)*/
 
 function screenLetterTriggers(event){
-    console.log(event.target.innerHTML);
+    const letterPressed=event.target.innerHTML.toLowerCase();
+    //console.log(pressedLetter);
+    let hasLetterInPositions = isLetterInWordAndWhere(letterPressed,wordsArray[diffLevel][gameWordNum]);
+    if (hasLetterInPositions[0]){
+        displayLetterInPositions(letterPressed,hasLetterInPositions.slice(1));
+        //console.log(hasLetterInPositions.slice(1));
+    } else {
+        displayMikePiece();
+    }
+
+
+    //isLetterInWordAndWhere()
 }
 
 function setScreenKeysEventListeners(){
@@ -110,6 +121,20 @@ function setScreenKeysEventListeners(){
 setScreenKeysEventListeners();
 
 /** EVENT LISTENERS (keyboard)*/
+
+function keyboardLetterTriggers(event){
+    const keyNum = event.which;
+    const letterPressed = String.fromCharCode(keyNum).toLowerCase();
+    if(letterPressed.match(/[a-z]/)){
+        let hasLetterInPositions = isLetterInWordAndWhere(letterPressed,wordsArray[diffLevel][gameWordNum]);
+        if (hasLetterInPositions[0]){
+            displayLetterInPositions(letterPressed,hasLetterInPositions.slice(1));
+            //console.log(hasLetterInPositions.slice(1));
+        } else {
+            displayMikePiece();
+        }
+    }
+}
 
 // OBJECT PLAYERS
 
@@ -164,13 +189,6 @@ function updatePlayers(){
 
 }
 
-function keyboardLetterTriggers(event){
-    keyNum=event.which;
-    console.log(String.fromCharCode(keyNum));
-}
-
-document.onkeypress = keyboardLetterTriggers;
-
 /* Game start */
 /* Event Listener */
 startButton.addEventListener('click', gameStart);
@@ -181,6 +199,7 @@ function gameStart() {
     startGameScreen.classList.add('hidden');
     const name = document.getElementById("username").value; // We get the name os the player
     createPlayers(name,'Currently playing');
+    document.onkeypress = keyboardLetterTriggers;
     // Verify some text in input
 }
 
