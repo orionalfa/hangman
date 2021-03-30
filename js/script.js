@@ -6,6 +6,8 @@ var numMikePiece = 0;
 var playersData = [];
 var currentSolvedLetters = 0;
 var pressedLetterArray = [];
+var initialTime;
+var winTime;
 
 /* constants used */
 const gameWordContainer = document.querySelector('.game-word');
@@ -19,6 +21,7 @@ const showThePlayersTime = document.querySelector(".name-time");
 const WinLevelScreen = document.querySelector('#wonThisLevel-container');
 const LoseScreen = document.querySelector('#youLost-container');
 const playAgainBtn = document.querySelector('#playAgain-btn');
+const finalTime = document.querySelector('#final-score-level');
 
 
 /* Possible game words declaration */
@@ -95,7 +98,6 @@ function accessToSelectedWord(){
 */
 
 function randomNumSelector(max, min) {
-
     return Math.round(Math.random() * (max - min) + min);
 }
 
@@ -110,17 +112,27 @@ function screenLetterTriggers(event) {
             displayLetterInPositions(letterPressed, hasLetterInPositions.slice(1));
             currentSolvedLetters += hasLetterInPositions.length - 1;
             if (currentSolvedLetters === diffLevel) {
-                WinLevelScreen.classList.remove('hidden');
+                winLevel();
             }
         } else {
             displayMikePiece();
             if (numMikePiece === 7) {
-                LoseScreen.classList.remove('hidden');
+                youLose();
             }
         }
     } //isLetterInWordAndWhere()
     pressedLetterArray.push(letterPressed);
     disableLetter(letterPressed);
+}
+function winLevel () {
+    WinLevelScreen.classList.remove('hidden');
+    winTime = new Date().getTime();
+    finalTime.innerText = "You did it in " + Math.trunc((winTime - initialTime)/1000) + " seconds";
+    initialTime = 0;
+    winTime = 0;
+}
+function youLose () {
+    LoseScreen.classList.remove('hidden');
 }
 
 function setScreenKeysEventListeners() {
@@ -176,6 +188,7 @@ function gameStart() {
     pressedLetterArray = [];
     currentSolvedLetters = 0;
     // Verify some text in input
+    initialTime = new Date().getTime();
 }
 
 
@@ -225,6 +238,7 @@ function goToNextLevel() {
     wordSelect(diffLevel);
     buildRoomForWord(diffLevel);
     WinLevelScreen.classList.add('hidden');
+    initialTime = new Date().getTime();
 }
 
 function disableLetter (letterToDisable) {
