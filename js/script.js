@@ -13,8 +13,8 @@ const startButton = document.getElementById('startbtn');
 const startGameScreen = document.querySelector('.start-game-screen');
 const nextLevelBtn = document.querySelector('#nextLevelBtn');
 const mikeBody = document.querySelector('.hangman-drawing');
-const showThePlayersNames = document.getElementsByClassName(".name-player");
-const showThePlayersTime = document.getElementsByClassName(".name-time");
+const showThePlayersNames = document.querySelector(".name-player");
+const showThePlayersTime = document.querySelector(".name-time");
 
 
 /* Possible game words declaration */
@@ -159,55 +159,56 @@ function keyboardLetterTriggers(event) {
 
 // OBJECT PLAYERS
 
-// Let where store our data
-
-
-// Place where we are going to show the information
-
-
 // Constructor method for our players parameters that interest us
 
 class Players {
-    constructor(name, time) {
+    constructor(name, time, level) {
         this.name = name;
         this.time = time;
+        this.level = level;
     }
-}
-
-// We create the function for our players
-
-function createPlayers(username, time) {
-    /*  const name = document.getElementsById("").value; // We get the name os the player
-     const time = document.getElementsById("").value; // we get the time score */
-
-    // Players object
-
-    var player = new Players(username, time);
-    playersData.push(player);
-
-    updatePlayers();
 }
 
 // Function to update the data and show the info
 
-function updatePlayers() {
+function displayPlayers() {
     showThePlayersNames.innerHTML = "";
     showThePlayersTime.innerHTML = "";
 
-    var liPlayer = document.createElement("li");
+    //var liPlayer = document.createElement("div");
 
     // for loop to run the array and show the info
 
     for (let i = 0; i < playersData.length; i++) {
         showThePlayersNames.innerHTML = showThePlayersNames.innerHTML +
-            '<li>' + playersData[i].name + '</li>'
+            '<p>' + playersData[i].name + '</p>' 
+            
     };
 
+    function computeTime(){   // funcion calcular tiempo
+
+    }
+        
     for (let j = 0; j < playersData.length; j++) {
-        showThePlayersTime.innerHTML = showThePlayersTime.innerHTML +
-            '<li>' + playersData[j].time + '</li>'
-    };
+            showThePlayersTime.innerHTML = showThePlayersTime.innerHTML +
+                '<li>' + playersData[j].time + '</li>'
+    };  
 
+}
+
+
+function createPlayers(name, time, level) {
+    // const name = document.getElementsById("").value; 
+    // const time = document.getElementsById("").value; 
+     
+
+    // Players object
+
+    var player = new Players(name, time, level);
+    playersData.push(player);
+
+    displayPlayers();
+   
 }
 
 /* Game start */
@@ -218,7 +219,7 @@ function gameStart() {
     wordSelect(diffLevel);
     buildRoomForWord(diffLevel);
     startGameScreen.classList.add('hidden');
-    const name = document.getElementById("username").value; // We get the name os the player
+    const name = document.getElementById("username").value; 
     createPlayers(name, 'Currently playing');
     document.onkeypress = keyboardLetterTriggers;
     // Verify some text in input
