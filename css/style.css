@@ -5,34 +5,40 @@
   --ropeColor: #4ecdc4;
   --mikeGreen: #aed137;
 }
+
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
   font-family: "Montserrat", sans-serif;
 }
+
 .transparent {
   opacity: 0;
 }
-
-main.main-flex {
+main {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   height: 100vh;
+  width: 100vw;
+}
+
+.mainGame-container {
+  display: flex;
+  width: 100%;
 }
 
 .game-container {
   display: flex;
   flex-direction: column;
-  align-content: center;
-  width: 70vw;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 70%;
+  height: 100%;
   background-color: var(--backgroundColor);
 }
-.scores-container {
-  width: 30vw;
-  background-color: thistle; /* Temporal */
-}
+
 .hangman-drawing {
   position: relative;
   left: 25px;
@@ -43,10 +49,10 @@ main.main-flex {
 /* * DRAWING */
 .rope {
   position: absolute;
-  background-color: wheat;
-  width: 5px;
-  height: 100px;
-  top: -50px;
+  background-color: #4ecdc4;
+  width: 10px;
+  height: 200px;
+  top: -101px;
   left: 68px;
 }
 
@@ -217,14 +223,15 @@ main.main-flex {
 .game-word {
   display: flex;
   justify-content: center;
-  gap: 10px;
-  margin: 20px 0;
+  margin-top: 50px;
 }
+
 .game-letter {
-  border-bottom: white 4px solid;
+  border-bottom: white 5px solid;
+  margin: 0px 5px 0px 5px;
   width: 55px;
-  height: 24px;
-  font-size: 25px;
+  height: 50px;
+  font-size: 35px;
   font-weight: 700;
   color: white;
   text-align: center;
@@ -234,14 +241,16 @@ main.main-flex {
 /* * KEYBOARD */
 
 .keyboard {
-  margin: 20px 0;
+  width: 95%;
 }
+
 .keyboard-line {
   display: flex;
   justify-content: center;
   gap: 10px;
   margin: 10px 0;
 }
+
 .keyboard-letter {
   color: white;
   background-color: var(--keyColor);
@@ -275,22 +284,26 @@ main.main-flex {
 /* RANKING */
 
 .scores-container {
+  width: 30%;
   background-color: #48747b;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .score-line {
+  width: 100%;
+  height: max-content;
   display: flex;
   justify-content: center;
-  gap: 10px;
-  margin-top: 2.1em;
+  margin-top: 85px;
 }
 
-.score-letter {
+/*.score-letter {
   border-bottom: 3px solid white;
   width: 32px;
   height: 24px;
-  margin-top: 85px;
-}
+}*/
 
 .letter-title-ranking {
   color: white;
@@ -300,16 +313,16 @@ main.main-flex {
 }
 
 .names-container {
-  margin-top: 4em;
-  margin-left: 4.5em;
+  margin-top: 40px;
+  width: 80%;
 }
 
 .names-score-container-one {
   height: 40px;
-  width: 75%;
+  width: 100%;
   background-color: #1a444b;
   border-radius: 5px;
-  margin-bottom: 2em;
+  margin-bottom: 20px;
 }
 
 .data {
@@ -328,8 +341,24 @@ main.main-flex {
   padding-right: 1em;
 }
 
-@media only screen and (max-width: 480px) {
-  /* Phones */
+@media (max-width: 750px) {
+  .mainGame-container {
+    flex-direction: column;
+  }
+
+  .game-container {
+    width: 100%;
+    height: 100vh;
+  }
+
+  .scores-container {
+    width: 100%;
+    padding-bottom: 100px;
+  }
+}
+
+/* @media only screen and (max-width: 480px) { 
+  Phones ------------------
   .game-container {
     width: 100vw;
   }
@@ -362,9 +391,10 @@ main.main-flex {
     line-height: 20px;
     font-size: 16px;
   }
-}
-@media only screen and (max-width: 768px) {
-  /* Tablets */
+} */
+
+/* @media only screen and (max-width: 768px) {
+   Tablets -----------------
   .game-container {
     width: 100vw;
   }
@@ -396,20 +426,21 @@ main.main-flex {
     line-height: 30px;
     font-size: 22px;
   }
-}
-@media only screen and (max-width: 1400px) {
-  /* Older laptops */
-  /*    .game-container{
+} */
+
+/*  @media only screen and (max-width: 1400px) {
+  Older laptops ---------
+   .game-container{
         width: 100vw;
     }
     .scores-container{
         width: 100vw;
-    } */
+    } 
   .game-word {
     display: flex;
     gap: 8px;
     margin: 10px 0;
-  }
+  } 
   .game-letter {
     border-bottom: white 2px solid;
     width: 40px;
@@ -430,7 +461,7 @@ main.main-flex {
     line-height: 36px;
     font-size: 24px;
   }
-}
+} */
 
 .hidden {
   visibility: hidden !important;
