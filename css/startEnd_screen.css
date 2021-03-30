@@ -192,3 +192,11 @@ input[type="submit"]:active {
 }
 
 /* END OF WIN AND LOSE CONTAINER ------------------- */
+
+/* WON THIS LEVEL CONTAINER ------------------- */
+
+.wonThisLevelBtn-container {
+  width: 78%;
+  display: flex;
+  justify-content: space-between;
+}

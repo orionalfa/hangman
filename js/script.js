@@ -54,6 +54,7 @@ function displayMikePiece() {
 }
 
 function restartMike() {
+    numMikePiece = 0;
     let piece = 0;
     while (piece < 7) {
         /* to avoid bugs */
@@ -232,15 +233,29 @@ function wordSelect(diffLevel) {
     gameWordNum = randomNumSelector(max, min);
 }
 
-nextLevelBtn.addEventListener('click', nextLevel)
+function finalLevel() {
+    // It musts check if the level is the last one to start this screen;
+    // It musts drives you to the start screen??
+}
 
-function nextLevel() {
+function restoreLetters () {
+    const allLetters = document.querySelectorAll('.keyboard-line > div');
+    for (let letter of allLetters) {
+        letter.classList.remove('letter-disabled');
+    }
+}
+
+nextLevelBtn.addEventListener('click', goToNextLevel)
+
+function goToNextLevel() {
     restartMike();
-    const youWinScreen = document.querySelector('#youWon-container');
-    youWinScreen.classList.add('hidden');
+    restoreLetters();
+    pressedLetterArray = [];
     diffLevel++;
     wordSelect(diffLevel);
     buildRoomForWord(diffLevel);
+    const WinLevelScreen = document.querySelector('#wonThisLevel-container');
+    WinLevelScreen.classList.add('hidden');
 }
 
 function disableLetter (letterToDisable) {

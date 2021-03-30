@@ -24,13 +24,13 @@
                     <p class="letter-gameName">N</p>
                 </div>
                 <div id="usr-form" class="usr-form-container">
-                    <input type="text" name="username" id="username" placeholder="Choose a username">
+                    <input type="text" name="username" id="username" placeholder="Choose a username" autofocus>
                     <input type="submit" name="startbtn" id="startbtn" value="START">
                 </div>
             </div>
         </div>
 
-        <div id="youWon-container" class="start-game-screen winEnd-screen hidden">
+        <div id="youWonTheGame-container" class="start-game-screen winEnd-screen hidden">
             <div class="startEnd-container">
                 <div class="happy-mike"></div>
                 <div class="finalContent-container">
@@ -40,14 +40,39 @@
                         <p class="letter-gameName">U</p>
                         <p class="letter-gameName"></p>
                         <p class="letter-gameName">W</p>
-                        <p class="letter-gameName">I</p>
+                        <p class="letter-gameName">O</p>
                         <p class="letter-gameName">N</p>
                         <p class="letter-gameName">!</p>
                     </div>
                     <div class="timeMsg-container">
                         <p id="final-score" class="time-msg">You did it in 15 seconds</p>
                     </div>
-                    <button id="nextLevelBtn" class="endScreen-btn">NEXT LEVEL</button>
+                    <button id="endGameBtn" class="endScreen-btn">END GAME</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="wonThisLevel-container" class="start-game-screen winEnd-screen hidden">
+            <div class="startEnd-container">
+                <div class="happy-mike"></div>
+                <div class="finalContent-container">
+                    <div class="finalMsg-container">
+                        <p class="letter-gameName">C</p>
+                        <p class="letter-gameName">O</p>
+                        <p class="letter-gameName">N</p>
+                        <p class="letter-gameName">G</p>
+                        <p class="letter-gameName">R</p>
+                        <p class="letter-gameName">A</p>
+                        <p class="letter-gameName">T</p>
+                        <p class="letter-gameName">S</p>
+                    </div>
+                    <div class="timeMsg-container">
+                        <p id="final-score" class="time-msg">You did it in 15 seconds</p>
+                    </div>
+                    <div class="wonThisLevelBtn-container">
+                        <button id="nextLevelBtn" class="endScreen-btn">NEXT LEVEL</button>
+                        <button id="endGameBtn" class="endScreen-btn">END GAME</button>
+                    </div>
                 </div>
             </div>
         </div>
