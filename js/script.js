@@ -1,5 +1,5 @@
 /* Global variables */
-var diffLevel = 5;
+var diffLevel = 4;
 var letterBoxElements = [];
 var gameWordNum;
 var numMikePiece = 0;
