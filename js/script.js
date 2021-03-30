@@ -198,7 +198,7 @@ function displayPlayers() {
 
 
 function createPlayers(name, time, level) {
-    // const name = document.getElementsById("").value; 
+
     // const time = document.getElementsById("").value; 
      
 
