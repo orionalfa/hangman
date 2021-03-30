@@ -98,7 +98,6 @@ function accessToSelectedWord(){
 */
 
 function randomNumSelector(max, min) {
-
     return Math.round(Math.random() * (max - min) + min);
 }
 
@@ -113,21 +112,27 @@ function screenLetterTriggers(event) {
             displayLetterInPositions(letterPressed, hasLetterInPositions.slice(1));
             currentSolvedLetters += hasLetterInPositions.length - 1;
             if (currentSolvedLetters === diffLevel) {
-                WinLevelScreen.classList.remove('hidden');
-                winTime = new Date().getTime();
-                finalTime.innerText = "You did it in " + Math.trunc((winTime - initialTime)/1000) + " seconds";
-                initialTime = 0;
-                winTime = 0;
+                winLevel();
             }
         } else {
             displayMikePiece();
             if (numMikePiece === 7) {
-                LoseScreen.classList.remove('hidden');
+                youLose();
             }
         }
     } //isLetterInWordAndWhere()
     pressedLetterArray.push(letterPressed);
     disableLetter(letterPressed);
+}
+function winLevel () {
+    WinLevelScreen.classList.remove('hidden');
+    winTime = new Date().getTime();
+    finalTime.innerText = "You did it in " + Math.trunc((winTime - initialTime)/1000) + " seconds";
+    initialTime = 0;
+    winTime = 0;
+}
+function youLose () {
+    LoseScreen.classList.remove('hidden');
 }
 
 function setScreenKeysEventListeners() {
