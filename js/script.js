@@ -117,7 +117,7 @@ function screenLetterTriggers(event) {
         }
     } //isLetterInWordAndWhere()
     pressedLetterArray.push(letterPressed);
-    //disableLetter()
+    disableLetter(letterPressed);
 }
 
 function setScreenKeysEventListeners() {
@@ -153,7 +153,7 @@ function keyboardLetterTriggers(event) {
             }
         } //isLetterInWordAndWhere()
         pressedLetterArray.push(letterPressed);
-        //disableLetter()
+        disableLetter(letterPressed);
     }
 }
 
@@ -241,4 +241,13 @@ function nextLevel() {
     diffLevel++;
     wordSelect(diffLevel);
     buildRoomForWord(diffLevel);
+}
+
+function disableLetter (letterToDisable) {
+    const allLetters = document.querySelectorAll('.keyboard-line > div');
+    for (let letter of allLetters) {
+        if (letterToDisable == letter.innerHTML.toLowerCase()){
+            letter.classList.add('letter-disabled');
+        }
+    }
 }
