@@ -10,11 +10,15 @@ var pressedLetterArray = [];
 /* constants used */
 const gameWordContainer = document.querySelector('.game-word');
 const startButton = document.getElementById('startbtn');
-const startGameScreen = document.querySelector('.start-game-screen');
+const startGameScreen = document.querySelector('#start-container');
 const nextLevelBtn = document.querySelector('#nextLevelBtn');
+const endGameBtn = document.querySelector('#endGameBtn');
 const mikeBody = document.querySelector('.hangman-drawing');
-const showThePlayersNames = document.querySelector(".name-player");
-const showThePlayersTime = document.querySelector(".name-time");
+const showThePlayersNames = document.getElementsByClassName(".name-player");
+const showThePlayersTime = document.getElementsByClassName(".name-time");
+const WinLevelScreen = document.querySelector('#wonThisLevel-container');
+const LoseScreen = document.querySelector('#youLost-container');
+const playAgainBtn = document.querySelector('#playAgain-btn');
 
 
 /* Possible game words declaration */
@@ -54,6 +58,7 @@ function displayMikePiece() {
 }
 
 function restartMike() {
+    numMikePiece = 0;
     let piece = 0;
     while (piece < 7) {
         /* to avoid bugs */
@@ -105,19 +110,17 @@ function screenLetterTriggers(event) {
             displayLetterInPositions(letterPressed, hasLetterInPositions.slice(1));
             currentSolvedLetters += hasLetterInPositions.length - 1;
             if (currentSolvedLetters === diffLevel) {
-                //youWonThisLevel();
-                console.log('next level');
+                WinLevelScreen.classList.remove('hidden');
             }
         } else {
             displayMikePiece();
             if (numMikePiece === 7) {
-                console.log('youLost');
-                //youLost();
+                LoseScreen.classList.remove('hidden');
             }
         }
     } //isLetterInWordAndWhere()
     pressedLetterArray.push(letterPressed);
-    //disableLetter()
+    disableLetter(letterPressed);
 }
 
 function setScreenKeysEventListeners() {
@@ -141,19 +144,17 @@ function keyboardLetterTriggers(event) {
                 displayLetterInPositions(letterPressed, hasLetterInPositions.slice(1));
                 currentSolvedLetters += hasLetterInPositions.length - 1;
                 if (currentSolvedLetters === diffLevel) {
-                    //youWonThisLevel();
-                    console.log('next level');
+                    WinLevelScreen.classList.remove('hidden');
                 }
             } else {
                 displayMikePiece();
                 if (numMikePiece === 7) {
-                    console.log('youLost');
-                    //youLost();
+                    LoseScreen.classList.remove('hidden');
                 }
             }
         } //isLetterInWordAndWhere()
         pressedLetterArray.push(letterPressed);
-        //disableLetter()
+        disableLetter(letterPressed);
     }
 }
 
@@ -216,6 +217,7 @@ function createPlayers(name, time, level) {
 startButton.addEventListener('click', gameStart);
 /* Main function */
 function gameStart() {
+    diffLevel = 4;
     wordSelect(diffLevel);
     buildRoomForWord(diffLevel);
     startGameScreen.classList.add('hidden');
@@ -233,13 +235,47 @@ function wordSelect(diffLevel) {
     gameWordNum = randomNumSelector(max, min);
 }
 
-nextLevelBtn.addEventListener('click', nextLevel)
+function finalLevel() {
+    // It musts check if the level is the last one to start this screen;
+    // It musts drives you to the start screen??
+}
 
-function nextLevel() {
+function restoreLetters () {
+    const allLetters = document.querySelectorAll('.keyboard-line > div');
+    for (let letter of allLetters) {
+        letter.classList.remove('letter-disabled');
+    }
+}
+
+nextLevelBtn.addEventListener('click', goToNextLevel);
+endGameBtn.addEventListener('click', goToStartScreen);
+playAgainBtn.addEventListener('click', goToStartScreen);
+
+
+function goToStartScreen() {
     restartMike();
-    const youWinScreen = document.querySelector('#youWon-container');
-    youWinScreen.classList.add('hidden');
+    restoreLetters();
+    pressedLetterArray = [];
+    WinLevelScreen.classList.add('hidden');
+    LoseScreen.classList.add('hidden');
+    startGameScreen.classList.remove('hidden');
+}
+
+function goToNextLevel() {
+    restartMike();
+    restoreLetters();
+    pressedLetterArray = [];
     diffLevel++;
     wordSelect(diffLevel);
     buildRoomForWord(diffLevel);
+    WinLevelScreen.classList.add('hidden');
+}
+
+function disableLetter (letterToDisable) {
+    const allLetters = document.querySelectorAll('.keyboard-line > div');
+    for (let letter of allLetters) {
+        if (letterToDisable == letter.innerHTML.toLowerCase()){
+            letter.classList.add('letter-disabled');
+        }
+    }
 }

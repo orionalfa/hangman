@@ -8,12 +8,16 @@
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/startEnd_screen.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <main class="main-flex">
-        <div class="start-game-screen">
-            <div id="start-container" class="startEnd-container">
+        <div id="start-container" class="start-game-screen">
+            <div  class="startEnd-container">
                 <div class="game-name-container">
                     <p class="letter-gameName">H</p>
                     <p class="letter-gameName">A</p>
@@ -47,13 +51,38 @@
                     <div class="timeMsg-container">
                         <p id="final-score" class="time-msg">You did it in 15 seconds</p>
                     </div>
-                    <button id="nextLevelBtn" class="endScreen-btn">NEXT LEVEL</button>
+                    <button class="endScreen-btn">END GAME</button>
                 </div>
             </div>
         </div>
 
-        <div class="start-game-screen loseEnd-screen hidden">
-            <div id="youLost-container" class="startEnd-container">
+        <div id="wonThisLevel-container" class="start-game-screen winEnd-screen hidden">
+            <div class="startEnd-container">
+                <div class="happy-mike"></div>
+                <div class="finalContent-container">
+                    <div class="finalMsg-container">
+                        <p class="letter-gameName">C</p>
+                        <p class="letter-gameName">O</p>
+                        <p class="letter-gameName">N</p>
+                        <p class="letter-gameName">G</p>
+                        <p class="letter-gameName">R</p>
+                        <p class="letter-gameName">A</p>
+                        <p class="letter-gameName">T</p>
+                        <p class="letter-gameName">S</p>
+                    </div>
+                    <div class="timeMsg-container">
+                        <p id="final-score" class="time-msg">You did it in 15 seconds</p>
+                    </div>
+                    <div class="wonThisLevelBtn-container">
+                        <button id="nextLevelBtn" class="endScreen-btn">NEXT LEVEL</button>
+                        <button id="endGameBtn" class="endScreen-btn">END GAME</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="youLost-container" class="start-game-screen loseEnd-screen hidden">
+            <div  class="startEnd-container">
                 <div class="sad-mike"></div>
                 <div class="finalContent-container">
                     <div class="finalMsg-container">
@@ -66,7 +95,7 @@
                         <p class="letter-gameName">S</p>
                         <p class="letter-gameName">E</p>
                     </div>
-                    <button class="endScreen-btn">PLAY AGAIN</button>
+                    <button id="playAgain-btn" class="endScreen-btn">PLAY AGAIN</button>
                 </div>
             </div>
         </div>
