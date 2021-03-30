@@ -283,6 +283,7 @@ function goToNextLevel() {
     wordSelect(diffLevel);
     buildRoomForWord(diffLevel);
     WinLevelScreen.classList.add('hidden');
+    initialTime = new Date().getTime();
 }
 
 function disableLetter (letterToDisable) {
