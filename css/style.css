@@ -254,9 +254,20 @@ main.main-flex {
   line-height: 46px;
   font-size: 25px;
   font-weight: 300;
+  transition: background-color 0.4s 0.1s, box-shadow 0.4s ease-out, transform 0.2s ease-in-out;
+}
+.keyboard-letter:hover{
+  box-shadow: 0px 2px 4px rgb(0 0 0 / 60%);
+}
+.keyboard-letter:active{
+  box-shadow: none;
+  transform: scale(0.95);
 }
 .letter-disabled {
   background-color: var(--disabledLetter);
+}
+.letter-disabled:hover{
+  box-shadow: none;
 }
 
 /* RANKING */
