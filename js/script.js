@@ -116,6 +116,8 @@ function screenLetterTriggers(event) {
                 WinLevelScreen.classList.remove('hidden');
                 winTime = new Date().getTime();
                 finalTime.innerText = "You did it in " + Math.trunc((winTime - initialTime)/1000) + " seconds";
+                initialTime = 0;
+                winTime = 0;
             }
         } else {
             displayMikePiece();
