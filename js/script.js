@@ -4,6 +4,8 @@ var letterBoxElements = [];
 var gameWordNum;
 var numMikePiece = 0;
 var playersData = [];
+var currentSolvedLetters = 0;
+var pressedLetterArray = [];
 
 /* constants used */
 const gameWordContainer = document.querySelector('.game-word');
@@ -29,9 +31,9 @@ wordsArray[9] = ['bandwagon', 'beekeeper', 'buzzwords', 'cockiness', 'espionage'
 function isLetterInWordAndWhere(letter, word) {
     hasLetterInPositions = [false];
 
-    for (let i=0; i<word.length; i++){
-        if (letter === word[i]){
-            hasLetterInPositions[0]=true;
+    for (let i = 0; i < word.length; i++) {
+        if (letter === word[i]) {
+            hasLetterInPositions[0] = true;
             hasLetterInPositions.push(i);
         }
     }
@@ -44,7 +46,8 @@ function isLetterInWordAndWhere(letter, word) {
 /* variables */
 /* Main function */
 function displayMikePiece() {
-    if (numMikePiece < 7) { /* to avoid bugs */
+    if (numMikePiece < 7) {
+        /* to avoid bugs */
         mikeBody.children[numMikePiece].classList.remove('transparent');
         numMikePiece += 1;
     }
@@ -52,7 +55,8 @@ function displayMikePiece() {
 
 function restartMike() {
     let piece = 0;
-    while (piece < 7) { /* to avoid bugs */
+    while (piece < 7) {
+        /* to avoid bugs */
         if (!mikeBody.children[piece].classList.contains('transparent')) {
             mikeBody.children[piece].classList.add('transparent');
         }
@@ -62,17 +66,13 @@ function restartMike() {
 
 function displayLetterInPositions(letter, positions) {
     const letterBoxes = gameWordContainer.children;
-    console.log(letterBoxes);
-    for (i of positions){
+    for (i of positions) {
         letterBoxes[i].innerHTML = letter;
     }
 }
 
-
-
-
 function buildRoomForWord(diffLevel) {
-        gameWordContainer.innerHTML = ' ';
+    gameWordContainer.innerHTML = ' ';
     for (let i = 0; i < diffLevel; i++) {
         const newElement = document.createElement('div');
         newElement.classList.add('game-letter');
@@ -90,30 +90,39 @@ function accessToSelectedWord(){
 */
 
 function randomNumSelector(max, min) {
-    
+
     return Math.round(Math.random() * (max - min) + min);
 }
 
 /** EVENT LISTENERS (screen)*/
 
-function screenLetterTriggers(event){
-    const letterPressed=event.target.innerHTML.toLowerCase();
+function screenLetterTriggers(event) {
+    const letterPressed = event.target.innerHTML.toLowerCase();
     //console.log(pressedLetter);
-    let hasLetterInPositions = isLetterInWordAndWhere(letterPressed,wordsArray[diffLevel][gameWordNum]);
-    if (hasLetterInPositions[0]){
-        displayLetterInPositions(letterPressed,hasLetterInPositions.slice(1));
-        //console.log(hasLetterInPositions.slice(1));
-    } else {
-        displayMikePiece();
-    }
-
-
-    //isLetterInWordAndWhere()
+    if (!pressedLetterArray.includes(letterPressed)) {
+        let hasLetterInPositions = isLetterInWordAndWhere(letterPressed, wordsArray[diffLevel][gameWordNum]);
+        if (hasLetterInPositions[0]) {
+            displayLetterInPositions(letterPressed, hasLetterInPositions.slice(1));
+            currentSolvedLetters += hasLetterInPositions.length - 1;
+            if (currentSolvedLetters === diffLevel) {
+                //youWonThisLevel();
+                console.log('next level');
+            }
+        } else {
+            displayMikePiece();
+            if (numMikePiece === 7) {
+                console.log('youLost');
+                //youLost();
+            }
+        }
+    } //isLetterInWordAndWhere()
+    pressedLetterArray.push(letterPressed);
+    //disableLetter()
 }
 
-function setScreenKeysEventListeners(){
+function setScreenKeysEventListeners() {
     var screenKeyboard = document.querySelectorAll('.keyboard-letter');
-    for (key of screenKeyboard){
+    for (key of screenKeyboard) {
         key.onclick = screenLetterTriggers;
     }
 }
@@ -122,17 +131,29 @@ setScreenKeysEventListeners();
 
 /** EVENT LISTENERS (keyboard)*/
 
-function keyboardLetterTriggers(event){
+function keyboardLetterTriggers(event) {
     const keyNum = event.which;
     const letterPressed = String.fromCharCode(keyNum).toLowerCase();
-    if(letterPressed.match(/[a-z]/)){
-        let hasLetterInPositions = isLetterInWordAndWhere(letterPressed,wordsArray[diffLevel][gameWordNum]);
-        if (hasLetterInPositions[0]){
-            displayLetterInPositions(letterPressed,hasLetterInPositions.slice(1));
-            //console.log(hasLetterInPositions.slice(1));
-        } else {
-            displayMikePiece();
-        }
+    if (letterPressed.match(/[a-z]/)) {
+        if (!pressedLetterArray.includes(letterPressed)) {
+            let hasLetterInPositions = isLetterInWordAndWhere(letterPressed, wordsArray[diffLevel][gameWordNum]);
+            if (hasLetterInPositions[0]) {
+                displayLetterInPositions(letterPressed, hasLetterInPositions.slice(1));
+                currentSolvedLetters += hasLetterInPositions.length - 1;
+                if (currentSolvedLetters === diffLevel) {
+                    //youWonThisLevel();
+                    console.log('next level');
+                }
+            } else {
+                displayMikePiece();
+                if (numMikePiece === 7) {
+                    console.log('youLost');
+                    //youLost();
+                }
+            }
+        } //isLetterInWordAndWhere()
+        pressedLetterArray.push(letterPressed);
+        //disableLetter()
     }
 }
 
@@ -146,8 +167,8 @@ function keyboardLetterTriggers(event){
 
 // Constructor method for our players parameters that interest us
 
-class Players{
-    constructor(name, time){
+class Players {
+    constructor(name, time) {
         this.name = name;
         this.time = time;
     }
@@ -155,9 +176,9 @@ class Players{
 
 // We create the function for our players
 
-function createPlayers(username, time){
-   /*  const name = document.getElementsById("").value; // We get the name os the player
-    const time = document.getElementsById("").value; // we get the time score */
+function createPlayers(username, time) {
+    /*  const name = document.getElementsById("").value; // We get the name os the player
+     const time = document.getElementsById("").value; // we get the time score */
 
     // Players object
 
@@ -169,7 +190,7 @@ function createPlayers(username, time){
 
 // Function to update the data and show the info
 
-function updatePlayers(){
+function updatePlayers() {
     showThePlayersNames.innerHTML = "";
     showThePlayersTime.innerHTML = "";
 
@@ -177,14 +198,14 @@ function updatePlayers(){
 
     // for loop to run the array and show the info
 
-    for (let i = 0; i < playersData.length; i++){
-        showThePlayersNames.innerHTML = showThePlayersNames.innerHTML + 
-        '<li>' + playersData[i].name + '</li>'    
+    for (let i = 0; i < playersData.length; i++) {
+        showThePlayersNames.innerHTML = showThePlayersNames.innerHTML +
+            '<li>' + playersData[i].name + '</li>'
     };
 
-    for (let j = 0; j < playersData.length; j++){
+    for (let j = 0; j < playersData.length; j++) {
         showThePlayersTime.innerHTML = showThePlayersTime.innerHTML +
-        '<li>' + playersData[j].time + '</li>'
+            '<li>' + playersData[j].time + '</li>'
     };
 
 }
@@ -198,14 +219,14 @@ function gameStart() {
     buildRoomForWord(diffLevel);
     startGameScreen.classList.add('hidden');
     const name = document.getElementById("username").value; // We get the name os the player
-    createPlayers(name,'Currently playing');
+    createPlayers(name, 'Currently playing');
     document.onkeypress = keyboardLetterTriggers;
     // Verify some text in input
 }
 
 /* ! Random word number selection depending of level */
 /* Main function */
-function wordSelect (diffLevel) {
+function wordSelect(diffLevel) {
     const max = wordsArray[diffLevel].length;
     const min = 0;
     gameWordNum = randomNumSelector(max, min);
