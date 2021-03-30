@@ -6,6 +6,8 @@ var numMikePiece = 0;
 var playersData = [];
 var currentSolvedLetters = 0;
 var pressedLetterArray = [];
+var initialTime;
+var winTime;
 
 /* constants used */
 const gameWordContainer = document.querySelector('.game-word');
@@ -19,6 +21,7 @@ const showThePlayersTime = document.getElementsByClassName(".name-time");
 const WinLevelScreen = document.querySelector('#wonThisLevel-container');
 const LoseScreen = document.querySelector('#youLost-container');
 const playAgainBtn = document.querySelector('#playAgain-btn');
+const finalTime = document.querySelector('#final-score-level');
 
 
 /* Possible game words declaration */
@@ -111,6 +114,8 @@ function screenLetterTriggers(event) {
             currentSolvedLetters += hasLetterInPositions.length - 1;
             if (currentSolvedLetters === diffLevel) {
                 WinLevelScreen.classList.remove('hidden');
+                winTime = new Date().getTime();
+                finalTime.innerText = "You did it in " + Math.trunc((winTime - initialTime)/1000) + " seconds";
             }
         } else {
             displayMikePiece();
@@ -224,6 +229,7 @@ function gameStart() {
     createPlayers(name, 'Currently playing');
     document.onkeypress = keyboardLetterTriggers;
     // Verify some text in input
+    initialTime = new Date().getTime();
 }
 
 /* ! Random word number selection depending of level */
