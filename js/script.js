@@ -55,7 +55,12 @@ function isLetterInWordAndWhere(letter, word) {
     //console.log(hasLetterInPositions);
     return hasLetterInPositions;
 }
-
+/* move up! */
+let wrongSound = new Audio('./sounds/Scream_mike.mp3');
+let correctSound = new Audio('./sounds/Child_laugh.mp3');
+let winSound = new Audio('./sounds/Mike_speech.mp3');
+let lostSound = new Audio('./sounds/So_badly_bad.mp3');
+let levelWonSound = new Audio('./sounds/Push_his_numbers.mp3');
 
 /* Display Mike Piece */
 /* variables */
@@ -65,6 +70,9 @@ function displayMikePiece() {
         /* to avoid bugs */
         mikeBody.children[numMikePiece].classList.remove('transparent');
         numMikePiece += 1;
+        if (wrongSound.pause && correctSound.pause){
+            wrongSound.play();
+        }
     }
 }
 
@@ -84,6 +92,9 @@ function displayLetterInPositions(letter, positions) {
     const letterBoxes = gameWordContainer.children;
     for (i of positions) {
         letterBoxes[i].innerHTML = letter;
+    }
+    if (wrongSound.pause && correctSound.pause){
+        correctSound.play();
     }
 }
 
@@ -145,6 +156,7 @@ function winLevel () {
     finalTime.innerText = "You did it in " + Math.trunc((winTime - initialTime)/1000) + " seconds";
     initialTime = 0;
     winTime = 0;
+    levelWonSound.play();
 }
 function youLose () {
     LoseScreen.classList.remove('hidden');
@@ -153,6 +165,7 @@ function youLose () {
     }
     restartMike();
     restoreLetters();
+    lostSound.play();
 }
 
 function setScreenKeysEventListeners() {
@@ -214,11 +227,15 @@ function gameStart() {
         currentSolvedLetters = 0;
         initialTime = new Date().getTime();
         document.getElementById('username').value = "";
+        const startSound = new Audio('./sounds/Mike_waz.mp3');
+        startSound.play();
     } else {
         alert('You must type a player name to play');
         //mensaje de error
     }
 }
+
+
 
 
 
@@ -329,9 +346,11 @@ function finalWin() {
     finalTime.innerText = "You did it in " + Math.trunc((winTime - initialTime)/1000) + " seconds";
     initialTime = 0;
     winTime = 0;
+    winSound.play();
 }
 
-var backgroundMusic = new Audio('./sounds/background-music.mp3');
+/* Sounds Implementation */
+let backgroundMusic = new Audio('./sounds/background-music.mp3');
 backgroundMusic.volume = 0.025;
 backgroundMusic.loop = true;
 window.onclick = function() {
