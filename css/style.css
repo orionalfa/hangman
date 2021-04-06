@@ -300,12 +300,6 @@ main {
   margin-top: 85px;
 }
 
-/*.score-letter {
-  border-bottom: 3px solid white;
-  width: 32px;
-  height: 24px;
-}*/
-
 .letter-title-ranking {
   color: white;
   text-align: center;
@@ -314,8 +308,50 @@ main {
 }
 
 .names-container {
-  margin-top: 40px;
-  width: 80%;
+  margin-top: 5px;
+  width: 90%;
+}
+
+.names-column-container {
+  margin-top: 25px;
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 0.5em;
+  padding-left: 0.5em;
+  color: white;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.name-column {
+  box-sizing: border-box;
+  margin: 3px;
+  margin-left: 0;
+  height: 24px;
+  width: 30%;
+  text-align: start;
+  border-bottom: 1px solid white;
+}
+
+.level-column {
+  box-sizing: border-box;
+  margin: 3px;
+  height: 24px;
+  width: 15%;
+  text-align: center;
+  border-bottom: 1px solid white;
+}
+
+.time-column {
+  box-sizing: border-box;
+  margin: 3px;
+  margin-right: 0;
+  height: 24px;
+  width: 55%;
+  text-align: end;
+  border-bottom: 1px solid white;
 }
 
 /* REVISAR ESTILOS ''''''''''''''''' */
@@ -336,7 +372,7 @@ main {
 
 .name-player {
   width: 30%;
-  text-align: center;
+  text-align: start;
 }
 
 .name-level {
@@ -346,7 +382,7 @@ main {
 
 .name-time {
   width: 55%;
-  text-align: center;
+  text-align: end;
 }
 
 .start-game-screen {
@@ -616,6 +652,12 @@ input[type="submit"]:active {
     width: 100%;
     padding-bottom: 100px;
   }
+
+  .names-column-container {
+    width: 90%;
+    font-size: 14px;
+  }
+
   .names-container {
     /* margin-top: 40px; */
     font-size: 13px;

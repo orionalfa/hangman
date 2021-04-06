@@ -297,8 +297,11 @@ function createPlayerDiv(name, time, level){
     const nameTime = document.createElement("div");
     const nameLevel = document.createElement("div");
     namePlayer.innerHTML = name;
-    nameLevel.innerHTML = "Level: " + level;
-    nameTime.innerHTML = "Time: " + time;
+    nameLevel.innerHTML = level;
+    nameTime.innerHTML = time;
+    namePlayer.classList.add("name-player"); 
+    nameLevel.classList.add("name-level"); 
+    nameTime.classList.add("name-time")
     newDiv.appendChild(namePlayer);
     newDiv.appendChild(nameLevel);
     newDiv.appendChild(nameTime);
@@ -307,8 +310,8 @@ function createPlayerDiv(name, time, level){
 
 function updatePlayerDiv (time, level) {
     const nameContainer = document.querySelector('.names-score-container');
-    nameContainer.children[1].innerText = 'Level: ' + level;
-    nameContainer.children[2].innerText = 'Time: ' + time;
+    nameContainer.children[1].innerText = level;
+    nameContainer.children[2].innerText = time;
 
 }
 
