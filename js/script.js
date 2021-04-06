@@ -26,6 +26,11 @@ const finalTime = document.querySelector('#final-score-level');
 const finalScreen = document.querySelector('#youWon-container');
 const endFinalGameBtn = document.querySelector('#endFinalLevelBtn');
 
+const formStart = document.querySelector('#usr-form');
+formStart.addEventListener('submit', function(e) {
+    e.preventDefault();
+})
+
 
 /* Possible game words declaration */
 var wordsArray = [];
@@ -208,6 +213,7 @@ function gameStart() {
         pressedLetterArray = [];
         currentSolvedLetters = 0;
         initialTime = new Date().getTime();
+        document.getElementById('username').value = "";
     } else {
         alert('You must type a player name to play');
         //mensaje de error
