@@ -54,6 +54,7 @@ main {
   height: 200px;
   top: -101px;
   left: 68px;
+  transition: 1s opacity;
 }
 
 .horn {
