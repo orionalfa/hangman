@@ -320,7 +320,7 @@ main {
 
 /* REVISAR ESTILOS ''''''''''''''''' */
 
-.names-score-container{
+.names-score-container {
   height: 40px;
   width: 100%;
   background-color: #1a444b;
@@ -329,11 +329,25 @@ main {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-right: .5em;
-  padding-left: .5em;
+  padding-right: 0.5em;
+  padding-left: 0.5em;
   color: white;
 }
 
+.name-player {
+  width: 30%;
+  text-align: center;
+}
+
+.name-level {
+  width: 15%;
+  text-align: center;
+}
+
+.name-time {
+  width: 55%;
+  text-align: center;
+}
 
 .start-game-screen {
   z-index: 10;

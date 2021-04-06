@@ -8,6 +8,7 @@ var currentSolvedLetters = 0;
 var pressedLetterArray = [];
 var initialTime;
 var winTime;
+var timeSubtotal = 0;
 
 /* constants used */
 const gameWordContainer = document.querySelector('.game-word');
@@ -127,6 +128,8 @@ function screenLetterTriggers(event) {
 function winLevel () {
     WinLevelScreen.classList.remove('hidden');
     winTime = new Date().getTime();
+    timeSubtotal += Math.trunc((winTime - initialTime)/1000);
+    updatePlayerDiv(timeSubtotal,diffLevel-3);
     finalTime.innerText = "You did it in " + Math.trunc((winTime - initialTime)/1000) + " seconds";
     initialTime = 0;
     winTime = 0;
@@ -156,12 +159,12 @@ function keyboardLetterTriggers(event) {
                 displayLetterInPositions(letterPressed, hasLetterInPositions.slice(1));
                 currentSolvedLetters += hasLetterInPositions.length - 1;
                 if (currentSolvedLetters === diffLevel) {
-                    WinLevelScreen.classList.remove('hidden');
+                    winLevel();
                 }
             } else {
                 displayMikePiece();
                 if (numMikePiece === 7) {
-                    LoseScreen.classList.remove('hidden');
+                    youLose();
                 }
             }
         } //isLetterInWordAndWhere()
@@ -176,19 +179,23 @@ function keyboardLetterTriggers(event) {
 startButton.addEventListener('click', gameStart);
 /* Main function */
 function gameStart() {
-    diffLevel = 4;
-    wordSelect(diffLevel);
-    buildRoomForWord(diffLevel);
-    startGameScreen.classList.add('hidden');
-    const name = document.getElementById("username").value; 
-    createPlayers(name, 'Currently playing', "4");
-    document.onkeypress = keyboardLetterTriggers;
-    restartMike();
-    restoreLetters();
-    pressedLetterArray = [];
-    currentSolvedLetters = 0;
-    // Verify some text in input
-    initialTime = new Date().getTime();
+    if (document.getElementById('username').value != "") {
+        diffLevel = 4;
+        wordSelect(diffLevel);
+        buildRoomForWord(diffLevel);
+        startGameScreen.classList.add('hidden');
+        const name = document.getElementById("username").value; 
+        createPlayers(name, 'Currently playing', "1");
+        document.onkeypress = keyboardLetterTriggers;
+        restartMike();
+        restoreLetters();
+        pressedLetterArray = [];
+        currentSolvedLetters = 0;
+        initialTime = new Date().getTime();
+    } else {
+        alert('You must type a player name to play');
+        //mensaje de error
+    }
 }
 
 
@@ -221,6 +228,7 @@ playAgainBtn.addEventListener('click', goToStartScreen);
 function goToStartScreen() {
     restartMike();
     restoreLetters();
+    timeSubtotal = 0;
     pressedLetterArray = [];
     currentSolvedLetters = 0;
     WinLevelScreen.classList.add('hidden');
@@ -283,7 +291,12 @@ function createPlayerDiv(name, time, level){
     newDiv.appendChild(namePlayer);
     newDiv.appendChild(nameLevel);
     newDiv.appendChild(nameTime);
-    whereMyDiv.appendChild(newDiv);
+    whereMyDiv.prepend(newDiv);
+}
 
-    
+function updatePlayerDiv (time, level) {
+    const nameContainer = document.querySelector('.names-score-container');
+    nameContainer.children[1].innerText = 'Level: ' + level;
+    nameContainer.children[2].innerText = 'Time: ' + time + 's';
+
 }
