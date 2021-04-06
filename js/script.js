@@ -23,6 +23,8 @@ const WinLevelScreen = document.querySelector('#wonThisLevel-container');
 const LoseScreen = document.querySelector('#youLost-container');
 const playAgainBtn = document.querySelector('#playAgain-btn');
 const finalTime = document.querySelector('#final-score-level');
+const finalScreen = document.querySelector('#youWon-container');
+const endFinalGameBtn = document.querySelector('#endFinalLevelBtn');
 
 
 /* Possible game words declaration */
@@ -113,7 +115,11 @@ function screenLetterTriggers(event) {
             displayLetterInPositions(letterPressed, hasLetterInPositions.slice(1));
             currentSolvedLetters += hasLetterInPositions.length - 1;
             if (currentSolvedLetters === diffLevel) {
-                winLevel();
+                if (diffLevel === 9) {
+                    finalWin();
+                } else {
+                    winLevel();
+                }
             }
         } else {
             displayMikePiece();
@@ -126,6 +132,7 @@ function screenLetterTriggers(event) {
     disableLetter(letterPressed);
 }
 function winLevel () {
+    restartMike();
     WinLevelScreen.classList.remove('hidden');
     winTime = new Date().getTime();
     timeSubtotal += Math.trunc((winTime - initialTime)/1000);
@@ -139,6 +146,8 @@ function youLose () {
     if (diffLevel == 4) {
         updatePlayerDiv('-','Not completed');
     }
+    restartMike();
+    restoreLetters();
 }
 
 function setScreenKeysEventListeners() {
@@ -162,7 +171,11 @@ function keyboardLetterTriggers(event) {
                 displayLetterInPositions(letterPressed, hasLetterInPositions.slice(1));
                 currentSolvedLetters += hasLetterInPositions.length - 1;
                 if (currentSolvedLetters === diffLevel) {
-                    winLevel();
+                    if (diffLevel === 9) {
+                        finalWin();
+                    } else {
+                        winLevel();
+                    }
                 }
             } else {
                 displayMikePiece();
@@ -211,11 +224,6 @@ function wordSelect(diffLevel) {
     gameWordNum = randomNumSelector(max, min);
 }
 
-function finalLevel() {
-    // It musts check if the level is the last one to start this screen;
-    // It musts drives you to the start screen??
-}
-
 function restoreLetters () {
     const allLetters = document.querySelectorAll('.keyboard-line > div');
     for (let letter of allLetters) {
@@ -226,14 +234,15 @@ function restoreLetters () {
 nextLevelBtn.addEventListener('click', goToNextLevel);
 endGameBtn.addEventListener('click', goToStartScreen);
 playAgainBtn.addEventListener('click', goToStartScreen);
+endFinalGameBtn.addEventListener('click', goToStartScreen);
 
 
 function goToStartScreen() {
-    restartMike();
     restoreLetters();
     timeSubtotal = 0;
     pressedLetterArray = [];
     currentSolvedLetters = 0;
+    finalScreen.classList.add('hidden')
     WinLevelScreen.classList.add('hidden');
     LoseScreen.classList.add('hidden');
     startGameScreen.classList.remove('hidden');
@@ -241,7 +250,6 @@ function goToStartScreen() {
 
 
 function goToNextLevel() {
-    restartMike();
     restoreLetters();
     pressedLetterArray = [];
     currentSolvedLetters = 0;
@@ -302,4 +310,14 @@ function updatePlayerDiv (time, level) {
     nameContainer.children[1].innerText = 'Level: ' + level;
     nameContainer.children[2].innerText = 'Time: ' + time;
 
+}
+
+function finalWin() {
+    finalScreen.classList.remove('hidden');
+    winTime = new Date().getTime();
+    timeSubtotal += Math.trunc((winTime - initialTime)/1000);
+    updatePlayerDiv(timeSubtotal,diffLevel-3);
+    finalTime.innerText = "You did it in " + Math.trunc((winTime - initialTime)/1000) + " seconds";
+    initialTime = 0;
+    winTime = 0;
 }
