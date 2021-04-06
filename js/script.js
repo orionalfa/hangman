@@ -193,6 +193,7 @@ function gameStart() {
         currentSolvedLetters = 0;
         initialTime = new Date().getTime();
     } else {
+        alert('You must type a player name to play');
         //mensaje de error
     }
 }
