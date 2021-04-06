@@ -129,13 +129,16 @@ function winLevel () {
     WinLevelScreen.classList.remove('hidden');
     winTime = new Date().getTime();
     timeSubtotal += Math.trunc((winTime - initialTime)/1000);
-    updatePlayerDiv(timeSubtotal,diffLevel-3);
+    updatePlayerDiv(timeSubtotal + 's',diffLevel-3);
     finalTime.innerText = "You did it in " + Math.trunc((winTime - initialTime)/1000) + " seconds";
     initialTime = 0;
     winTime = 0;
 }
 function youLose () {
     LoseScreen.classList.remove('hidden');
+    if (diffLevel == 4) {
+        updatePlayerDiv('-','Not completed');
+    }
 }
 
 function setScreenKeysEventListeners() {
@@ -297,6 +300,6 @@ function createPlayerDiv(name, time, level){
 function updatePlayerDiv (time, level) {
     const nameContainer = document.querySelector('.names-score-container');
     nameContainer.children[1].innerText = 'Level: ' + level;
-    nameContainer.children[2].innerText = 'Time: ' + time + 's';
+    nameContainer.children[2].innerText = 'Time: ' + time;
 
 }
