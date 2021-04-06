@@ -330,3 +330,12 @@ function finalWin() {
     initialTime = 0;
     winTime = 0;
 }
+
+var backgroundMusic = new Audio('./sounds/background-music.mp3');
+backgroundMusic.volume = 0.025;
+backgroundMusic.loop = true;
+window.onclick = function() {
+    if (backgroundMusic.paused) {
+        backgroundMusic.play();
+    }
+};
