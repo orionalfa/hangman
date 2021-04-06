@@ -1,192 +1,228 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Hangman</title>
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
-</head>
-<body>
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
+      integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="speaker" onclick="speakerClick()">
+      <i class="fas fa-volume-up" id="speaker"></i>
+    </div>
     <main class="main-flex">
-        <div id="start-container" class="start-game-screen">
-            <div  class="startEnd-container">
-                <div class="game-name-container">
-                    <p class="letter-gameName">H</p>
-                    <p class="letter-gameName">A</p>
-                    <p class="letter-gameName">N</p>
-                    <p class="letter-gameName">G</p>
-                    <p class="letter-gameName"></p>
-                    <p class="letter-gameName">A</p>
-                    <p class="letter-gameName">N</p>
-                </div>
-                <form id="usr-form" class="usr-form-container">
-                    <input type="text" name="username" id="username" placeholder="Choose a username" maxlength="8">
-                    <input type="submit" name="startbtn" id="startbtn" value="START">
-                </form>
-            </div>
+      <div id="start-container" class="start-game-screen">
+        <div class="startEnd-container">
+          <div class="game-name-container">
+            <p class="letter-gameName">H</p>
+            <p class="letter-gameName">A</p>
+            <p class="letter-gameName">N</p>
+            <p class="letter-gameName">G</p>
+            <p class="letter-gameName"></p>
+            <p class="letter-gameName">A</p>
+            <p class="letter-gameName">N</p>
+          </div>
+          <form id="usr-form" class="usr-form-container">
+            <input
+              type="text"
+              name="username"
+              id="username"
+              placeholder="Choose a username"
+              maxlength="8"
+            />
+            <input type="submit" name="startbtn" id="startbtn" value="START" />
+          </form>
         </div>
-        
-        <div class="mainGame-container">
-            <div id="youWon-container" class="transition-screen hidden">
-                <div class="startEnd-container">
-                    <div class="happy-mike"></div>
-                    <div class="finalContent-container">
-                        <div class="finalMsg-container">
-                            <p class="letter-gameName">Y</p>
-                            <p class="letter-gameName">O</p>
-                            <p class="letter-gameName">U</p>
-                            <p class="letter-gameName"></p>
-                            <p class="letter-gameName">W</p>
-                            <p class="letter-gameName">I</p>
-                            <p class="letter-gameName">N</p>
-                            <p class="letter-gameName">!</p>
-                        </div>
-                        <div class="timeMsg-container">
-                            <p id="final-score" class="time-msg">You did it in 15 seconds</p>
-                        </div>
-                        <button id="endFinalLevelBtn" class="endScreen-btn">END GAME</button>
-                    </div>
-                </div>
-            </div>
-    
-            <div id="wonThisLevel-container" class="transition-screen hidden">
-                <div class="startEnd-container">
-                    <div class="happy-mike"></div>
-                    <div class="finalContent-container">
-                        <div class="finalMsg-container">
-                            <p class="letter-gameName">C</p>
-                            <p class="letter-gameName">O</p>
-                            <p class="letter-gameName">N</p>
-                            <p class="letter-gameName">G</p>
-                            <p class="letter-gameName">R</p>
-                            <p class="letter-gameName">A</p>
-                            <p class="letter-gameName">T</p>
-                            <p class="letter-gameName">S</p>
-                        </div>
-                        <div class="timeMsg-container">
-                            <p id="final-score-level" class="time-msg">You did it in 15 seconds</p>
-                        </div>
-                        <div class="wonThisLevelBtn-container">
-                            <button id="nextLevelBtn" class="endScreen-btn">NEXT LEVEL</button>
-                            <button id="endGameBtn" class="endScreen-btn">END GAME</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-    
-            <div id="youLost-container" class="transition-screen hidden">
-                <div  class="startEnd-container">
-                    <div class="sad-mike"></div>
-                    <div class="finalContent-container">
-                        <div class="finalMsg-container">
-                            <p class="letter-gameName">Y</p>
-                            <p class="letter-gameName">O</p>
-                            <p class="letter-gameName">U</p>
-                            <p class="letter-gameName"></p>
-                            <p class="letter-gameName">L</p>
-                            <p class="letter-gameName">O</p>
-                            <p class="letter-gameName">S</p>
-                            <p class="letter-gameName">E</p>
-                        </div>
-                        <button id="playAgain-btn" class="endScreen-btn">PLAY AGAIN</button>
-                    </div>
-                </div>
-            </div>
+      </div>
 
-            <div class="game-container">
-                <div class="hangman-drawing swingimage">
-                    <div class="rope transparent"> </div>
-                    <div class="head transparent"> 
-                        <div class="horn"> </div>
-                        <div class="horn right"> </div>
-
-                    </div>
-                    
-                    <div class="face transparent">
-                        <div class="eye">
-                        <div class="iris"> </div>
-                        </div>
-                        <div class="mouth"> </div>
-                    </div>
-                    <div class="hand transparent"></div>
-                    <div class="hand right transparent"></div>
-                    <div class="leg transparent">
-                        <div class="nail"></div>
-                        <div class="nail one"></div>
-                        <div class="nail two"></div>
-                    </div>
-
-                    <div class="leg two transparent">
-                        <div class="nail"></div>
-                        <div class="nail one"></div>
-                        <div class="nail two"></div>
-                    </div>
-                </div>
-                <div class="game-word">
-                </div>
-                <div class="keyboard">
-                    <div class="keyboard-line">
-                        <div class="keyboard-letter">Q</div>
-                        <div class="keyboard-letter">W</div>
-                        <div class="keyboard-letter">E</div>
-                        <div class="keyboard-letter">R</div>
-                        <div class="keyboard-letter">T</div>
-                        <div class="keyboard-letter">Y</div>
-                        <div class="keyboard-letter">U</div>
-                        <div class="keyboard-letter">I</div>
-                        <div class="keyboard-letter">O</div>
-                        <div class="keyboard-letter">P</div>
-                    </div>
-                    <div class="keyboard-line">
-                        <div class="keyboard-letter">A</div>
-                        <div class="keyboard-letter">S</div>
-                        <div class="keyboard-letter">D</div>
-                        <div class="keyboard-letter">F</div>
-                        <div class="keyboard-letter">G</div>
-                        <div class="keyboard-letter">H</div>
-                        <div class="keyboard-letter">J</div>
-                        <div class="keyboard-letter">K</div>
-                        <div class="keyboard-letter">L</div>
-                    </div>
-                    <div class="keyboard-line">
-                        <div class="keyboard-letter">Z</div>
-                        <div class="keyboard-letter">X</div>
-                        <div class="keyboard-letter">C</div>
-                        <div class="keyboard-letter">V</div>
-                        <div class="keyboard-letter">B</div>
-                        <div class="keyboard-letter">N</div>
-                        <div class="keyboard-letter">M</div>
-                    </div>
-                </div>
+      <div class="mainGame-container">
+        <div id="youWon-container" class="transition-screen hidden">
+          <div class="startEnd-container">
+            <div class="happy-mike"></div>
+            <div class="finalContent-container">
+              <div class="finalMsg-container">
+                <p class="letter-gameName">Y</p>
+                <p class="letter-gameName">O</p>
+                <p class="letter-gameName">U</p>
+                <p class="letter-gameName"></p>
+                <p class="letter-gameName">W</p>
+                <p class="letter-gameName">I</p>
+                <p class="letter-gameName">N</p>
+                <p class="letter-gameName">!</p>
+              </div>
+              <div class="timeMsg-container">
+                <p id="final-score" class="time-msg">
+                  You did it in 15 seconds
+                </p>
+              </div>
+              <button id="endFinalLevelBtn" class="endScreen-btn">
+                END GAME
+              </button>
             </div>
-            <div class="scores-container">
-                <div class="score-line">
-                    <div class="letter-gameName"><p class="letter-title-ranking">S</p></div>
-                    <div class="letter-gameName"><p class="letter-title-ranking">C</p></div>
-                    <div class="letter-gameName"><p class="letter-title-ranking">O</p></div>
-                    <div class="letter-gameName"><p class="letter-title-ranking">R</p></div>
-                    <div class="letter-gameName"><p class="letter-title-ranking">E</p></div>
-                    <div class="letter-gameName"><p class="letter-title-ranking">S</p></div>
-                </div>
-                <div class="names-column-container">
-                    <div class="name-column">NAME</div>
-                    <div class="level-column">LEVEL</div>
-                    <div class="time-column">TIME</div>
-                </div>  
-                <div class="names-container"> 
-                </div>   
-            </div>
+          </div>
         </div>
-        
-        
+
+        <div id="wonThisLevel-container" class="transition-screen hidden">
+          <div class="startEnd-container">
+            <div class="happy-mike"></div>
+            <div class="finalContent-container">
+              <div class="finalMsg-container">
+                <p class="letter-gameName">C</p>
+                <p class="letter-gameName">O</p>
+                <p class="letter-gameName">N</p>
+                <p class="letter-gameName">G</p>
+                <p class="letter-gameName">R</p>
+                <p class="letter-gameName">A</p>
+                <p class="letter-gameName">T</p>
+                <p class="letter-gameName">S</p>
+              </div>
+              <div class="timeMsg-container">
+                <p id="final-score-level" class="time-msg">
+                  You did it in 15 seconds
+                </p>
+              </div>
+              <div class="wonThisLevelBtn-container">
+                <button id="nextLevelBtn" class="endScreen-btn">
+                  NEXT LEVEL
+                </button>
+                <button id="endGameBtn" class="endScreen-btn">END GAME</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="youLost-container" class="transition-screen hidden">
+          <div class="startEnd-container">
+            <div class="sad-mike"></div>
+            <div class="finalContent-container">
+              <div class="finalMsg-container">
+                <p class="letter-gameName">Y</p>
+                <p class="letter-gameName">O</p>
+                <p class="letter-gameName">U</p>
+                <p class="letter-gameName"></p>
+                <p class="letter-gameName">L</p>
+                <p class="letter-gameName">O</p>
+                <p class="letter-gameName">S</p>
+                <p class="letter-gameName">E</p>
+              </div>
+              <button id="playAgain-btn" class="endScreen-btn">
+                PLAY AGAIN
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="game-container">
+          <div class="hangman-drawing swingimage">
+            <div class="rope transparent"></div>
+            <div class="head transparent">
+              <div class="horn"></div>
+              <div class="horn right"></div>
+            </div>
+
+            <div class="face transparent">
+              <div class="eye">
+                <div class="iris"></div>
+              </div>
+              <div class="mouth"></div>
+            </div>
+            <div class="hand transparent"></div>
+            <div class="hand right transparent"></div>
+            <div class="leg transparent">
+              <div class="nail"></div>
+              <div class="nail one"></div>
+              <div class="nail two"></div>
+            </div>
+
+            <div class="leg two transparent">
+              <div class="nail"></div>
+              <div class="nail one"></div>
+              <div class="nail two"></div>
+            </div>
+          </div>
+          <div class="game-word"></div>
+          <div class="keyboard">
+            <div class="keyboard-line">
+              <div class="keyboard-letter">Q</div>
+              <div class="keyboard-letter">W</div>
+              <div class="keyboard-letter">E</div>
+              <div class="keyboard-letter">R</div>
+              <div class="keyboard-letter">T</div>
+              <div class="keyboard-letter">Y</div>
+              <div class="keyboard-letter">U</div>
+              <div class="keyboard-letter">I</div>
+              <div class="keyboard-letter">O</div>
+              <div class="keyboard-letter">P</div>
+            </div>
+            <div class="keyboard-line">
+              <div class="keyboard-letter">A</div>
+              <div class="keyboard-letter">S</div>
+              <div class="keyboard-letter">D</div>
+              <div class="keyboard-letter">F</div>
+              <div class="keyboard-letter">G</div>
+              <div class="keyboard-letter">H</div>
+              <div class="keyboard-letter">J</div>
+              <div class="keyboard-letter">K</div>
+              <div class="keyboard-letter">L</div>
+            </div>
+            <div class="keyboard-line">
+              <div class="keyboard-letter">Z</div>
+              <div class="keyboard-letter">X</div>
+              <div class="keyboard-letter">C</div>
+              <div class="keyboard-letter">V</div>
+              <div class="keyboard-letter">B</div>
+              <div class="keyboard-letter">N</div>
+              <div class="keyboard-letter">M</div>
+            </div>
+          </div>
+        </div>
+        <div class="scores-container">
+          <div class="score-line">
+            <div class="letter-gameName">
+              <p class="letter-title-ranking">S</p>
+            </div>
+            <div class="letter-gameName">
+              <p class="letter-title-ranking">C</p>
+            </div>
+            <div class="letter-gameName">
+              <p class="letter-title-ranking">O</p>
+            </div>
+            <div class="letter-gameName">
+              <p class="letter-title-ranking">R</p>
+            </div>
+            <div class="letter-gameName">
+              <p class="letter-title-ranking">E</p>
+            </div>
+            <div class="letter-gameName">
+              <p class="letter-title-ranking">S</p>
+            </div>
+          </div>
+          <div class="names-column-container">
+            <div class="name-column">NAME</div>
+            <div class="level-column">LEVEL</div>
+            <div class="time-column">TIME</div>
+          </div>
+          <div class="names-container"></div>
+        </div>
+      </div>
     </main>
-</body>
-<script src="./js/script.js"></script>
+  </body>
+  <script src="./js/script.js"></script>
 </html>
+"""""""";"""";
