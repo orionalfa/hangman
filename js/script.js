@@ -300,14 +300,6 @@ function buildRoomForWord(diffLevel) {
   }
 }
 
-/*
-function accessToSelectedWord(){
-    var level = 1;
-    word ='';
-    return word;
-}
-*/
-
 function randomNumSelector(max, min) {
   return Math.round(Math.random() * (max - min) + min);
 }
