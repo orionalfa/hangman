@@ -240,7 +240,8 @@ main {
   width: 100%;
   display: flex;
   justify-content: center;
-  margin-top: 50px;
+  margin-top: 120px;
+  margin-bottom: 20px;
 }
 
 .game-letter {
